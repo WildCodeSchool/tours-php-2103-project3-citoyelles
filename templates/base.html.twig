@@ -12,11 +12,23 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
+
+	</head>
+	<body>
+		<header>
+			<nav class="sidenav">
+				<a href="javascript:void(0)" class="closebtn">&times;</a>
+				<a href="#">Accueil</a>
+				<a href="#">Festiv'Elles du livre</a>
+				<a href="#">Les Rencontres Citoy'Elles</a>
+				<a href="#">L'Edit'Elles du lundi</a>
+				<a href="#">Pour Elles</a>
+			</nav>
+			<span id="burger" style="font-size:30px;cursor:pointer">&#9776;</span>
+		</header>
+		{% block body %}{% endblock %}
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
-	</head>
-	<body>
-		{% block body %}{% endblock %}
 	</body>
 </html>

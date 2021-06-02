@@ -10,3 +10,17 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+function openNav() {
+    document.querySelector('nav.sidenav').style.width = '300px';
+}
+
+const burgerButton = document.getElementById('burger');
+burgerButton.addEventListener('click', openNav);
+
+function closeNav() {
+    document.querySelector('nav.sidenav').style.width = '0';
+}
+
+const closeButton = document.querySelector('a.closebtn');
+closeButton.addEventListener('click', closeNav);
