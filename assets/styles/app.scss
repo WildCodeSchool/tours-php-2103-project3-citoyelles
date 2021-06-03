@@ -1,5 +1,23 @@
 @import 'variables.scss';
 
+:root {
+  --title-color: #3f48cc;
+  --police-color: #252525;
+  --line-height: 1.5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
   }
@@ -37,6 +55,14 @@ body {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+  }
+
+  #burger {
+    z-index: 100;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: var(--title-color);
   }
   
   @media screen and (max-height: 450px) {

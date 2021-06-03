@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
+		<link rel="icon" type="image/png" href="images/favicon.ico"/>
 		<title>
 			{% block title %}Projet 3 Name{% endblock %}
 		</title>
@@ -16,6 +16,12 @@
 	</head>
 	<body>
 		<header>
+			<div class="banner">
+				<img src="images/banner.png" alt="bandeau">
+			</div>
+			<span id="burger" style="font-size:30px;cursor:pointer">&#9776;</span>
+		</header>
+		<div class="main-flex-container">
 			<nav class="sidenav">
 				<a href="javascript:void(0)" class="closebtn">&times;</a>
 				<a href="#">Accueil</a>
@@ -24,9 +30,13 @@
 				<a href="#">L'Edit'Elles du lundi</a>
 				<a href="#">Pour Elles</a>
 			</nav>
-			<span id="burger" style="font-size:30px;cursor:pointer">&#9776;</span>
-		</header>
-		{% block body %}{% endblock %}
+			<main>
+			{% block body %}{% endblock %}
+			</main>
+		</div>
+		<footer>
+
+		</footer>
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
