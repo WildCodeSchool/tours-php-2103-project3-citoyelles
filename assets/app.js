@@ -12,7 +12,7 @@ import './styles/app.scss';
 import './bootstrap';
 
 function openNav() {
-    document.querySelector('nav.sidenav').style.width = '300px';
+    document.querySelector('nav.sidenav').style.width = '100%';
 }
 
 const burgerButton = document.getElementById('burger');
