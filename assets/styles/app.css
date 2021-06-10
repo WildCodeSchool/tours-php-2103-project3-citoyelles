@@ -22,6 +22,7 @@ body {
   font-size: 1rem;
   line-height: var(--line-height);
   color: var(--police-color);
+  margin: 0;
 }
 
 /* elements of sidenav*/
@@ -74,6 +75,8 @@ body {
 }
 
 /* elements of main*/
+
+
 h1, h2 {
   color: var(--title-color);
 }
@@ -85,6 +88,61 @@ h1 {
 p {
   text-align: justify;
 }
+
+/* footer */
+footer {
+  background-color: var(--title-color);
+}
+
+footer h1, h2, section, a {
+  color: white;
+  font-size: 0.5rem;
+  text-align: left;
+}
+
+footer h1 {
+  text-decoration: underline;
+  text-align: center;
+  padding: 2%;
+}
+
+footer ul {
+  padding: 0;
+}
+
+footer li {
+  list-style: none;
+}
+
+footer img {
+  width: 20px;
+  margin: 10px;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.socialAndMember {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.socialNetworks ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.membership {
+  margin-bottom: 10%;
+  align-self: center;
+}
+
 
 /* index -------------------------------------------------------*/
 
