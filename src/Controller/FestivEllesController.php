@@ -13,8 +13,6 @@ class FestivEllesController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('festiv_elles/index.html.twig', [
-            'controller_name' => 'FestivEllesController',
-        ]);
+        return $this->render('festiv_elles/index.html.twig');
     }
 }
