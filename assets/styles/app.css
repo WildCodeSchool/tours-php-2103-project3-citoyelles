@@ -1,92 +1,106 @@
 :root {
-  --title-color: #3f48cc;
-  --police-color: #3d3d3d;
-  --line-height: 1.5;
+    --title-color: #3f48cc;
+    --police-color: #3d3d3d;
+    --line-height: 1.5;
 }
+
 
 /* reset CSS */
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 
 /* reponsive images */
+
 img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
+
 
 /* general css --------------------------------------------------------*/
+
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  line-height: var(--line-height);
-  color: var(--police-color);
-  margin: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: var(--line-height);
+    color: var(--police-color);
+    overflow-x: hidden;
 }
 
+main {
+    margin: 16px;
+}
+
+
 /* elements of sidenav*/
+
 #burger {
-  z-index: 100;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: var(--title-color);
+    z-index: 100;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: var(--title-color);
 }
 
 .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgba(63, 72, 204, 0.95);
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(63, 72, 204, 0.95);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
 .sidenav ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #f1f1f1;
-  white-space: nowrap;
-  display: block;
-  transition: 0.3s;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #f1f1f1;
+    white-space: nowrap;
+    display: block;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #818181;
+    color: #818181;
 }
 
 .sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
+
 
 /* elements of main*/
 
-
-h1, h2 {
-  color: var(--title-color);
+h1,
+h2 {
+    color: var(--title-color);
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 p {
-  text-align: justify;
+    text-align: justify;
 }
 
 /* top button */
@@ -108,117 +122,139 @@ p {
 }
 
 /* footer */
+
 footer {
-  background-color: var(--title-color);
+    background-color: var(--title-color);
 }
 
-footer h1, footer h2, footer section, footer a {
-  color: white;
-  font-size: 0.5rem;
-  text-align: left;
+footer h1,
+footer h2,
+footer section,
+footer a {
+    color: white;
+    font-size: 0.5rem;
+    text-align: left;
 }
 
 footer h1 {
-  text-decoration: underline;
-  text-align: center;
-  padding: 2%;
+    text-decoration: underline;
+    text-align: center;
+    padding: 2%;
 }
 
 footer ul {
-  padding: 0;
+    padding: 0;
 }
 
 footer li {
-  list-style: none;
+    list-style: none;
 }
 
 footer img {
-  width: 20px;
-  margin: 10px;
+    width: 20px;
+    margin: 10px;
 }
 
 .footer-flex {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
 }
 
 .socialAndMember {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .socialNetworks ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .membership {
-  margin-bottom: 10%;
-  align-self: center;
+    margin-bottom: 10%;
+    align-self: center;
 }
 
 
 /* index -------------------------------------------------------*/
 
 .insidenav ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: "festivelles festivelles ." ". rencontres rencontres" "editelles editelles ." ". portrelles portrelles";
-  list-style: none;
-  padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "festivelles festivelles ." ". rencontres rencontres" "editelles editelles ." ". portrelles portrelles";
+    list-style: none;
+    padding: 0;
 }
 
 .insidenav li:nth-child(1) {
-  grid-area: festivelles;
+    grid-area: festivelles;
 }
 
 .insidenav li:nth-child(2) {
-  grid-area: rencontres;
+    grid-area: rencontres;
 }
 
 .insidenav li:nth-child(3) {
-  grid-area: editelles;
+    grid-area: editelles;
 }
 
 .insidenav li:nth-child(4) {
-  grid-area: portrelles;
+    grid-area: portrelles;
 }
 
 .insidenav li {
-  transition-property: transform;
-  transition-duration: 0.3s;
+    transition-property: transform;
+    transition-duration: 0.3s;
 }
 
 .insidenav li:nth-child(even) {
-  transform: rotate(50deg);
+    transform: rotate(50deg);
 }
 
 .insidenav li:hover {
-  z-index: 1234;
-  transform: rotate(20deg);
-  transition-duration: 0.5s;
+    z-index: 1234;
+    transform: rotate(20deg);
+    transition-duration: 0.5s;
 }
 
 .insidenav img {
-  width: 70%;
-  margin: 1rem;
-  border: 3px solid transparent;
-  border-radius: 5px;
-  transform: rotate(-20deg);
+    width: 70%;
+    margin: 1rem;
+    border: 3px solid transparent;
+    border-radius: 5px;
+    transform: rotate(-20deg);
 }
 
 .insidenav img:hover {
-  z-index: 1234;
-  border: 3px solid var(--title-color);
-  box-shadow: 0 0 10px var(--title-color);
+    z-index: 1234;
+    border: 3px solid var(--title-color);
+    box-shadow: 0 0 10px var(--title-color);
 }
 
 
+/* Meetings-----------------------------------------------------*/
+
+.article {
+    background-color: #EFF1FF;
+    border: darkgrey 1px;
+    border-radius: 5px;
+    padding-inline: 10px;
+    padding-block: 5px;
+}
+
+.article * {
+    margin-top: 0;
+}
+
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }

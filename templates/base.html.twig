@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="icon" type="image/png" href="images/favicon.ico"/>
 		<title>
-			{% block title %}Projet 3 Name{% endblock %}
+			{% block title %}Citoy'Elles{% endblock %}
 		</title>
 
 		{% block stylesheets %}
@@ -16,6 +16,7 @@
 	<body>
 		<header>
 			<div class="banner">
+				{% block banner %}<img src="images/banner.png" alt="bandeau">{% endblock %}
 			</div>
 			<span id="burger" style="font-size:30px;cursor:pointer">&#9776;</span>
 		</header>
@@ -23,9 +24,9 @@
 			<nav class="sidenav">
 				<ul>
 					<li><a href="javascript:void(0)" class="closebtn">&times;</a></li>
-					<li><a href=" {{ path("home") }}">Accueil</a></li>
+					<li><a href="{{ path("home") }}">Accueil</a></li>
 					<li><a href="{{ path("festiv_elles") }}">Festiv'Elles du livre</a></li>
-					<li><a href="#">Les Rencontres Citoy'Elles</a></li>
+					<li><a href="{{ path("meetings") }}">Les Rencontres Citoy'Elles</a></li>
 					<li><a href="#">L'Edit'Elles du lundi</a></li>
 					<li><a href="#">Pour Elles</a></li>
 				</ul>
