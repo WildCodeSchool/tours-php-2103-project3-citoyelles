@@ -8,17 +8,26 @@
     </section>
     <nav class="insidenav">
         <ul>
+            {# A propos de Citoy'Elles #}
             <li>
-                <a href="#"><img src="images/FestivEllesduLivreW400.jpg" alt="Festiv'Elles du livre"></a>
-            </li> {# Festiv'Elles du livre #}  <li>
-                <a href="#"><img src="images/Les_Rencontres_Citoy_EllesW400.jpg" alt="Les Rencontres Citoy'Elles"></a>
-            </li> {# Les Rencontres Citoy'Elles #}
+                <a href="{{ path("about") }}"><img src="images/banner.png" alt="À Propos de Citoy'Elles"></a>
+            </li>
+            {# Festiv'Elles du livre #}
+            <li>
+                <a href="{{ path("festiv_elles") }}"><img src="images/FestivEllesduLivreW400.jpg" alt="Festiv'Elles du livre"></a>
+            </li>
+            {# Les Rencontres Citoy'Elles #}
+            <li>
+                <a href="{{ path("meetings") }}"><img src="images/Les_Rencontres_Citoy_EllesW400.jpg" alt="Les Rencontres Citoy'Elles"></a>
+            </li>
+            {# L'Edit'Elles du lundi #}
             <li>
                 <a href="#"><img src="images/editellesW400.png" alt="L'Edit'Elles du lundi"></a>
-            </li> {# L'Edit'Elles du lundi #}
+            </li>
+            {# Portr'Elles #}
             <li>
                 <a href="#"><img src="images/PortrEllesW400.png" alt="Portr'Elles"></a>
-            </li> {# Portr'Elles #}
+            </li>
         </ul>
     </nav>
 {% endblock %}
