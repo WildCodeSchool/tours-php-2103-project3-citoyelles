@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FestivEllesController extends AbstractController
+class ActuEllesController extends AbstractController
 {
     /**
-     * @Route("/festiv'elles", name="festiv_elles")
+     * @Route("/actu'elles", name="actu_elles")
      */
     public function index(): Response
     {
-        return $this->render('festiv_elles/index.html.twig');
+        return $this->render('actu_elles/index.html.twig');
     }
 }
