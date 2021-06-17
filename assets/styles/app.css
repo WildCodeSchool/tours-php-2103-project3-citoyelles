@@ -267,4 +267,9 @@ footer img {
   width: 50px;
 }
 
+.portelles {
+  display: flex ;
+  flex-direction: column;
+}
+
 
