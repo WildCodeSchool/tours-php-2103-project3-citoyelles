@@ -95,6 +95,7 @@
 
         <ul>
             {% for article in articles %}
+            <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
             <h2>{{ article.title }}</h2>
             <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
             <p>
