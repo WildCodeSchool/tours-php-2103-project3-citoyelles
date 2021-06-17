@@ -16,7 +16,7 @@
 	<body>
 		<header>
 			<div class="banner">
-				{% block banner %}<img src="images/banner.png" alt="bandeau">{% endblock %}
+				{% block banner %}<img src="/images/banner.png" alt="bandeau">{% endblock %}
 			</div>
 			<span id="burger" style="font-size:30px;cursor:pointer">&#9776;</span>
 		</header>
@@ -25,6 +25,7 @@
 				<ul>
 					<li><a href="javascript:void(0)" class="closebtn">&times;</a></li>
 					<li><a href="{{ path("home") }}">Accueil</a></li>
+					<li><a href="{{ path("about") }}">À propos</a></li>
 					<li><a href="{{ path("festiv_elles") }}">Festiv'Elles du livre</a></li>
 					<li><a href="{{ path("meetings") }}">Les Rencontres Citoy'Elles</a></li>
 					<li><a href="#">L'Edit'Elles du lundi</a></li>
@@ -51,9 +52,9 @@
 				<div class="socialAndMember">
 					<div class="socialNetworks">
 						<ul>
-							<li><a href="https://www.instagram.com/citoyelles/?hl=fr" target="_blank"><img src="images/instagram96.jpg" alt="instagram"></a></li>
-							<li><a href="https://www.facebook.com/citoyelles" target="_blank"><img src="images/facebook96.jpg" alt="facebook"></a></li>
-							<li><a href="https://twitter.com/nouetdom" target="_blank"><img src="images/twitter96.png" alt="twitter"></a></li>
+							<li><a href="https://www.instagram.com/citoyelles/?hl=fr" target="_blank"><img src="/images/instagram96.jpg" alt="instagram"></a></li>
+							<li><a href="https://www.facebook.com/citoyelles" target="_blank"><img src="/images/facebook96.jpg" alt="facebook"></a></li>
+							<li><a href="https://twitter.com/nouetdom" target="_blank"><img src="/images/twitter96.png" alt="twitter"></a></li>
 						</ul>
 					</div>
 					<div class="membership">
