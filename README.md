@@ -37,8 +37,8 @@ It's symfony website-skeleton project with some additional tools to validate cod
 Please read [Twig > Docs > Filters > format_datetime](https://twig.symfony.com/doc/3.x/filters/format_datetime.html)  
 5.0. Run `composer recipes` to check if *twig/intl-extra, twig/extra-bundle* are available, if not :  
 5.1. Run `composer require [twig/intl-extra] [twig/extra-bundle]`  
-5.2. install php7.4-intl module : `sudo apt install php7.4-intl` (If you run php7.4...)  
-5.3. restart apache : `service apache2 restart` (Is it really necessary?)
+5.2. Install php7.4-intl module : `sudo apt install php7.4-intl` (If you run php7.4...)  
+5.3. Restart apache : `service apache2 restart` (Is it really necessary?)
 
 
 
