@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
 class Article
 {
+    public const TYPES = ["festivelles", "actuelles", "portrelles"];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -19,6 +23,7 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private string $title;
 
@@ -29,18 +34,28 @@ class Article
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private string $content;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     private \DateTimeInterface $date;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank()
+     * @Assert\Choice(choices=Article::TYPES, message="Choisissez un type valide.")
      */
-    private array $type = [];
+    private string $type;
+
+    public function __construct()
+    {
+        $this->date = new DateTime();
+    }
+
 
     public function getId(): ?int
     {
@@ -95,12 +110,12 @@ class Article
         return $this;
     }
 
-    public function getType(): ?array
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(array $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
 
