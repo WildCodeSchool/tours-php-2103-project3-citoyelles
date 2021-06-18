@@ -261,6 +261,14 @@ footer img {
     }
 }
 
+
+/* Edit'Elles-----------------------------------------------------*/
+
+.logos {
+    display: flex;
+    flex-direction: row;
+}
+
 /* Actu'Elles-----------------------------------------------------*/
 
 .logo_citoyelles {
