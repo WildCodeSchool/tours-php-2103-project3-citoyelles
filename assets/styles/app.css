@@ -34,6 +34,8 @@ body {
 
 main {
     margin: 16px;
+    max-width: 1000px;
+    margin: auto;
 }
 
 
@@ -97,10 +99,21 @@ h2 {
 
 h1 {
     text-align: center;
+    font-size: min(7.5vw, 48px);
+}
+
+h2 {
+    text-align: center;
+    font-size: min(5vw, 32px);
 }
 
 p {
     text-align: justify;
+    font-size: min(calc(10px + 0.8vw), 18px);
+}
+
+h3 {
+    font-size: min(calc(10px + 0.8vw), 18px);
 }
 
 
