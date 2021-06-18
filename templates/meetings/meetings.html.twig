@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Rencontres - {{ parent() }}{% endblock %}
+
+{% block banner %}<img src="images/Les_Rencontres_Citoy_EllesW400.jpg" alt="bandeau">{% endblock %}
+{% block body %}
+<h2>Les Rencontres Citoy'Elles</h2>
+<p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit perspiciatis sed officiis magnam. Dolorum debitis corrupti delectus exercitationem ratione quibusdam consectetur modi est repellendus? Animi nihil, ullam necessitatibus praesentium, impedit
+    neque quia asperiores iure in atque commodi doloribus. Culpa doloremque quia est accusamus beatae facilis ex iste dolores quae, velit, magni officiis? Assumenda libero magnam excepturi eius deleniti incidunt vel harum corporis aliquid tenetur odit
+    maiores ipsam quod pariatur nam, qui consequatur esse quibusdam ratione sint eaque voluptatum? Vel vero quo voluptatibus esse libero magnam temporibus perferendis, omnis fugiat necessitatibus quos commodi, rem, deleniti eum enim corrupti delectus
+    tempora! Excepturi.
+</p>
+
+{{ include("meetings/article.html.twig") }}
+{% endblock %}

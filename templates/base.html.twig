@@ -3,20 +3,68 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
+		<link rel="icon" type="image/png" href="images/favicon.ico"/>
 		<title>
-			{% block title %}Projet 3 Name{% endblock %}
+			{% block title %}Citoy'Elles{% endblock %}
 		</title>
 
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
+	</head>
+	<body>
+		<header>
+			<div class="banner">
+				{% block banner %}<img src="/images/banner.png" alt="bandeau">{% endblock %}
+			</div>
+			<span id="burger" style="font-size:30px;cursor:pointer">&#9776;</span>
+		</header>
+		<div class="main-flex-container">
+			<nav class="sidenav">
+				<ul>
+					<li><a href="javascript:void(0)" class="closebtn">&times;</a></li>
+					<li><a href="{{ path("home") }}">Accueil</a></li>
+					<li><a href="{{ path("about") }}">À propos</a></li>
+					<li><a href="{{ path("festiv_elles") }}">Festiv'Elles du livre</a></li>
+					<li><a href="{{ path("meetings") }}">Les Rencontres Citoy'Elles</a></li>
+					<li><a href="#">L'Edit'Elles du lundi</a></li>
+					<li><a href="{{ path("actu_elles") }}">Actu'Elles</a></li>
+				</ul>
+			</nav>
+			<main>
+			{% block body %}{% endblock %}
+			</main>
+		</div>
+		<button id="myBtn" title="Go to top">&uArr;</button>
+		<footer>
+			<h1>Nous contacter</h1>
+			<div class="footer-flex">
+				<section class="contact">
+					<h2>
+						Citoy'Elles :
+					</h2>
+					<ul>
+						<li>tél: 06 10 99 44 48</li>
+						<li>mail: <a href="mailto:citoyelles@hotmail.com">citoyelles@hotmail.com</a></li>
+					</ul>
+				</section>
+				<div class="socialAndMember">
+					<div class="socialNetworks">
+						<ul>
+							<li><a href="https://www.instagram.com/citoyelles/?hl=fr" target="_blank"><img src="/images/instagram96.jpg" alt="instagram"></a></li>
+							<li><a href="https://www.facebook.com/citoyelles" target="_blank"><img src="/images/facebook96.jpg" alt="facebook"></a></li>
+							<li><a href="https://twitter.com/nouetdom" target="_blank"><img src="/images/twitter96.png" alt="twitter"></a></li>
+						</ul>
+					</div>
+					<div class="membership">
+						<a href="#" download="">Rejoignez-nous</a>
+					</div>
+				</div>
+			</div>
+		</footer>
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
-	</head>
-	<body>
-		{% block body %}{% endblock %}
 	</body>
 </html>
