@@ -41,17 +41,21 @@ class ArticleController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+                    return $this->render('article/new.html.twig', [
+                        'form' => $form->createView(),
+                        'error' => "Une erreur a eu lieu lors du déplacement du fichier, veuillez réessayer."
+                    ]);
                 }
                 $article->setImageFilename($newFilename);
             }
             $entityManager->persist($article);
             $entityManager->flush();
-            return $this-> redirectToRoute('home'); // non définitif
+            return $this->redirectToRoute('home'); // non définitif
         }
 
         return $this->render('article/new.html.twig', [
             'form' => $form->createView(),
+            "error" => ""
         ]);
     }
 }

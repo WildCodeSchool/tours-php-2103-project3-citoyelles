@@ -16,9 +16,10 @@ class FestivEllesController extends AbstractController
     {
         $articles = $articleRepository->findBy(
             ['type' => 'festivelles'],
-            ['id' => 'DESC'],
-            1
+            ['date' => 'DESC'],
+            4
         );
+        // $articles = $articleRepository->findAll();
         return $this->render('festiv_elles/index.html.twig', [
             'articles' => $articles
         ]);
