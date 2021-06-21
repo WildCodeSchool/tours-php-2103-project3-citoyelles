@@ -14,7 +14,6 @@ class FestivEllesController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository): Response
     {
-        dd($this->getParameter('images_directory'));
         $articles = $articleRepository->findBy(
             ['type' => 'festivelles'],
             ['date' => 'DESC']
