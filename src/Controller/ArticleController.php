@@ -30,7 +30,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $imageFile */
             $imageFile = $form->get('image')->getData();
-            if ($imageFile) {
+            if ($imageFile !== null) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
@@ -43,13 +43,16 @@ class ArticleController extends AbstractController
                 } catch (FileException $e) {
                     return $this->render('article/new.html.twig', [
                         'form' => $form->createView(),
-                        'error' => "Une erreur a eu lieu lors du déplacement du fichier, veuillez réessayer."
+                        'error' => "Une erreur a eu lieu lors de la création du fichier, veuillez réessayer."
                     ]);
                 }
                 $article->setImageFilename($newFilename);
             }
             $entityManager->persist($article);
             $entityManager->flush();
+
+            $this->addFlash('success', "L'article a bien été créé.");
+
             return $this->redirectToRoute('home'); // non définitif
         }
 

@@ -57,6 +57,7 @@ class Article
     public function __construct()
     {
         $this->date = new DateTime();
+        $this->imageFilename = "default";
     }
 
 
