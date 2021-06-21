@@ -47,9 +47,9 @@ class ArticleController extends AbstractController
                         );
                     } else {
                         throw new HttpException(
-                            500, 
+                            500,
                             "Paramètres images_directory invalide, contacter les administrateurs du site"
-                            );
+                        );
                     }
                 } catch (FileException $e) {
                     return $this->render('article/new.html.twig', [
