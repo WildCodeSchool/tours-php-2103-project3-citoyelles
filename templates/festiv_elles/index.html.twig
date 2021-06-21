@@ -95,8 +95,8 @@
 
         <ul>
             {% for article in articles %}
-            {% if article.imageFilename != "default" %}
-            <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}"> 
+            {% if article.imageFilename != null %}    
+            <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
             {% endif %}
             <h2>{{ article.title }}</h2>
             <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>

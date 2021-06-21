@@ -33,7 +33,7 @@ class Article
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $imageFilename; // image filename
+    private ?string $imageFilename;
 
     /**
      * @ORM\Column(type="text")
@@ -57,7 +57,6 @@ class Article
     public function __construct()
     {
         $this->date = new DateTime();
-        $this->imageFilename = "default";
     }
 
 
