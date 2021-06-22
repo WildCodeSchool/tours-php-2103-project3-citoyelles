@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ArticleType extends AbstractType
 {
@@ -25,15 +26,8 @@ class ArticleType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
-                    new File([
+                    new Image([
                         'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/gif',
-                            'image/jpg',
-                            'image/jpeg',
-                            'image/png',
-                        ],
-                        'mimeTypesMessage' => 'Veuiller téléverser une image au format valide.',
                     ])
                 ]
             ])
@@ -47,7 +41,6 @@ class ArticleType extends AbstractType
             ])
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
