@@ -215,8 +215,10 @@ footer img {
     background-color: var(--article-color);
     border: darkgrey 1px;
     border-radius: 5px;
-    padding-inline: 10px;
-    padding-block: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-bottom: 10px;
 }
 
