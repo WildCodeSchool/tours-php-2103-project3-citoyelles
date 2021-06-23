@@ -34,8 +34,9 @@ body {
 }
 
 main {
-    max-width: min(1000px, 95%);
+    max-width: 1010px;
     margin: auto;
+    padding: 10px;
 }
 
 
