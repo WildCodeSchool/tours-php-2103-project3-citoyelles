@@ -11,17 +11,17 @@
         <h3> Dossiers et actualités de votre association </h3>
         
         <p> 
-                <ul>
-            {% for article in articles %}
-            {% if article.imageFilename != null %}
-            <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
-            {% endif %}
-            <h2>{{ article.title }}</h2>
-            <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
-            <p>
-                <pre>{{ article.content }}</pre>
-            </p>
-            {% endfor %}
+            <ul>
+                {% for article in articles %}
+                {% if article.imageFilename != null %}
+                <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+                {% endif %}
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
+                <p>
+                    <pre>{{ article.content }}</pre>
+                </p>
+                {% endfor %}
         </ul>
 
          </p>
@@ -30,6 +30,9 @@
 
         <img src="" alt="Portrait">
         <p>
+
+
+        </ul>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Dolorum assumenda aliquid, quo illo quisquam similique eligendi facilis! Dolore iste fugiat perferendis,
             accusantium quod veniam ducimus dolorem laborum, repellat aliquid error sit, repudiandae hic cum quibusdam.

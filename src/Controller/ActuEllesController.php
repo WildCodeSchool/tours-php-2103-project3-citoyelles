@@ -15,11 +15,14 @@ class ActuEllesController extends AbstractController
     public function index(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findBy(
-            ['type' => 'citoyelle'],
+            ['type' => 'citoyelles'],
             ['date' => 'DESC']
         );
+
         return $this->render('actu_elles/index.html.twig', [
             'articles' => $articles
         ]);
     }
+
+
 }

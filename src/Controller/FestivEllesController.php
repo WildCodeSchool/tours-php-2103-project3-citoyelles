@@ -18,6 +18,7 @@ class FestivEllesController extends AbstractController
             ['type' => 'festivelles'],
             ['date' => 'DESC']
         );
+       
         return $this->render('festiv_elles/index.html.twig', [
             'articles' => $articles
         ]);
