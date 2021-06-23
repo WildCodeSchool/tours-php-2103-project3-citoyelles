@@ -157,35 +157,40 @@ footer img {
 
 .insidenav ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "festivelles festivelles ." ". rencontres rencontres" "editelles editelles ." ". portrelles portrelles";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "festivelles festivelles rencontres rencontres" ". about about ." ". about about ." "editelles editelles portrelles portrelles";
     list-style: none;
     padding: 0;
 }
 
 .insidenav li:nth-child(1) {
-    grid-area: festivelles;
+    grid-area: about;
+    transform: rotate(5deg);
 }
 
 .insidenav li:nth-child(2) {
-    grid-area: rencontres;
+    grid-area: festivelles;
+    transform: rotate(-10deg);
 }
 
 .insidenav li:nth-child(3) {
-    grid-area: editelles;
+    grid-area: rencontres;
+    transform: rotate(10deg);
 }
 
 .insidenav li:nth-child(4) {
+    grid-area: editelles;
+    transform: rotate(-10deg);
+}
+
+.insidenav li:nth-child(5) {
     grid-area: portrelles;
+    transform: rotate(10deg);
 }
 
 .insidenav li {
     transition-property: transform;
     transition-duration: 0.3s;
-}
-
-.insidenav li:nth-child(even) {
-    transform: rotate(50deg);
 }
 
 .insidenav li:hover {
@@ -199,7 +204,6 @@ footer img {
     margin: 1rem;
     border: 3px solid transparent;
     border-radius: 5px;
-    transform: rotate(-20deg);
 }
 
 .insidenav img:hover {
