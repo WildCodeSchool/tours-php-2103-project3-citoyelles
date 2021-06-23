@@ -342,3 +342,33 @@ footer img {
         }
     }
 }
+
+
+/* Edit'Elles-----------------------------------------------------*/
+
+.fixedHeight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30vh;
+}
+
+.socialNetworksEditelles ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 0;
+    list-style: none;
+}
+
+
+/* Actu'Elles-----------------------------------------------------*/
+
+.logo_citoyelles {
+    width: 50px;
+}
+
+.portelles {
+    display: flex;
+    flex-direction: column;
+}
