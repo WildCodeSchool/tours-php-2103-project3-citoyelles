@@ -113,6 +113,7 @@ footer h1 {
     text-decoration: underline;
     text-align: center;
     padding: 2%;
+    margin: 0;
 }
 
 footer ul {
