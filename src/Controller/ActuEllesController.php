@@ -19,8 +19,13 @@ class ActuEllesController extends AbstractController
             ['date' => 'DESC']
         );
 
+        $portraits = $articleRepository->findBy(
+            ['type' => 'portrelles']
+        );
+
         return $this->render('actu_elles/index.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            'portraits' => $portraits
         ]);
     }
 
