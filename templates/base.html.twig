@@ -33,6 +33,11 @@
 				</ul>
 			</nav>
 			<main>
+			{% for message in app.flashes('success') %}
+			<div id="flashMessage">
+				{{ message }}
+			</div>
+			{% endfor %}
 			{% block body %}{% endblock %}
 			</main>
 		</div>
