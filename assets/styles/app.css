@@ -264,7 +264,12 @@ footer img {
 
 /* Edit'Elles-----------------------------------------------------*/
 
-
+.fixedHeight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30vh;
+}   
 .socialNetworksEditelles ul{
     display: flex;
     flex-wrap: wrap;
