@@ -1,6 +1,7 @@
 :root {
     --title-color: #3f48cc;
     --police-color: #3d3d3d;
+    --article-color: #EFF1FF;
     --line-height: 1.5;
 }
 
@@ -38,57 +39,6 @@ main {
 }
 
 
-/* elements of sidenav*/
-
-#burger {
-    z-index: 100;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    color: var(--title-color);
-}
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgba(63, 72, 204, 0.95);
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #f1f1f1;
-    white-space: nowrap;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #818181;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-
 /* elements of main*/
 
 h1,
@@ -110,10 +60,7 @@ h2 {
     font-size: min(calc(10px + 1.2vw), 22px);
 }
 
-h3 {
-    font-size: min(calc(8px + 1vw), 18px);
-}
-
+h3,
 p {
     text-align: justify;
     font-size: min(calc(8px + 1vw), 18px);
@@ -264,7 +211,7 @@ footer img {
 /* Meetings-----------------------------------------------------*/
 
 .article {
-    background-color: #EFF1FF;
+    background-color: var(--article-color);
     border: darkgrey 1px;
     border-radius: 5px;
     padding-inline: 10px;
@@ -276,6 +223,16 @@ footer img {
     margin-top: 0;
 }
 
+
+/* Actu'Elles-----------------------------------------------------*/
+
+.logo_citoyelles {
+    width: 50px;
+}
+
+
+/* Media Queries--------------------------------------------------*/
+
 @media screen and (max-height: 450px) {
     .sidenav {
         padding-top: 15px;
@@ -285,9 +242,100 @@ footer img {
     }
 }
 
+@media screen and (max-width: 900px) {
+    /* elements of sidenav*/
+    #burger {
+        z-index: 100;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: var(--title-color);
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgba(63, 72, 204, 0.95);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+    .sidenav ul {
+        list-style: none;
+        padding: 0;
+    }
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #f1f1f1;
+        white-space: nowrap;
+        display: block;
+        transition: 0.3s;
+    }
+    .sidenav a:hover {
+        color: #818181;
+    }
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+}
 
-/* Actu'Elles-----------------------------------------------------*/
-
-.logo_citoyelles {
-    width: 50px;
+@media screen and (min-width: 901px) {
+    /* elements of sidenav */
+    #burger,
+    .closebtn,
+    #closebtnli {
+        display: none;
+    }
+    .main-flex-container {
+        display: flex;
+    }
+    .sidenav {
+        width: 400px;
+        min-width: 400px;
+        border-right: 1px solid var(--title-color);
+        background-color: var(--article-color);
+    }
+    .sidenav ul {
+        padding: 0;
+        margin: 0;
+        position: sticky;
+        top: 0;
+    }
+    .sidenav li {
+        list-style: none;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        padding-left: 40px;
+        border-bottom: 1px solid var(--title-color);
+    }
+    .sidenav a {
+        display: block;
+        text-decoration: none;
+        color: var(--title-color);
+        font-size: 20px;
+    }
+    .sidenav a:hover {
+        font-weight: 600;
+    }
+    @media (max-width: 1200px) {
+        .sidenav {
+            width: 260px;
+            min-width: 260px;
+        }
+        .sidenav li {
+            padding-left: 10px;
+        }
+        .sidenav a {
+            font-size: 16px;
+        }
+    }
 }
