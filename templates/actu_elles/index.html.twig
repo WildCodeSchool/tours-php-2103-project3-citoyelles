@@ -27,7 +27,7 @@
    {% for portrait in portraits %}
 
         <h2>{{ portrait.title }}</h2>
-        <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}">
+        <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
         <iframe width="560" height="315" src="{{ portrait.ytLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p>
         </ul>

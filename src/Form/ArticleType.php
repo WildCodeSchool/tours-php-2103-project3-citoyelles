@@ -42,7 +42,7 @@ class ArticleType extends AbstractType
             ->add('type', ChoiceType::class, [
                 'choices' => [
                     'Festiv\'Elles' => Article::TYPES[0],
-                    'Actu\'Elles' => Article::TYPES[1],
+                    'Citoy\'Elles' => Article::TYPES[1],
                     'Portr\'Elles' => Article::TYPES[2]
                 ]
             ])

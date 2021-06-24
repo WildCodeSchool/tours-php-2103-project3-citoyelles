@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ActuEllesController extends AbstractController
 {
     /**
-     * @Route("/actuelles", name="actu_elles")
+     * @Route("/actuelles", name="actuelles")
      */
     public function index(ArticleRepository $articleRepository): Response
     {
@@ -20,7 +20,9 @@ class ActuEllesController extends AbstractController
         );
 
         $portraits = $articleRepository->findBy(
-            ['type' => 'portrelles']
+            ['type' => 'portrelles'],
+            ['date' => 'DESC'],
+            1
         );
 
         return $this->render('actu_elles/index.html.twig', [
