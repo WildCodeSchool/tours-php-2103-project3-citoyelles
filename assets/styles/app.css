@@ -214,6 +214,34 @@ footer img {
 }
 
 
+/* Festiv'Elles-------------------------------------------------*/
+
+.members {
+    display: grid;
+}
+
+.member {
+    margin-bottom: 15px;
+}
+
+.member * {
+    margin: 0;
+}
+
+.member-mission {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.member-name {
+    font-size: 14px;
+}
+
+.member-contact {
+    font-size: 12px;
+}
+
+
 /* Meetings-----------------------------------------------------*/
 
 .article {
@@ -294,6 +322,10 @@ footer img {
         font-size: 36px;
         margin-left: 50px;
     }
+    /* Festiv'Elles-------------------------------------------------*/
+    .members {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (min-width: 901px) {
@@ -334,6 +366,10 @@ footer img {
     .sidenav a:hover {
         font-weight: 600;
     }
+    /* Festiv'Elles-------------------------------------------------*/
+    .members {
+        grid-template-columns: repeat(3, 1fr);
+    }
     @media (max-width: 1200px) {
         .sidenav {
             width: 260px;
@@ -344,6 +380,10 @@ footer img {
         }
         .sidenav a {
             font-size: 16px;
+        }
+        /* Festiv'Elles-------------------------------------------------*/
+        .members {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }

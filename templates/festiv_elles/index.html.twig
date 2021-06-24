@@ -37,34 +37,26 @@
         </p>
 
         <h2> Organigramme </h2>
-        <h3> Direction Générale </h3>
-        <p>
-            Dominique Nouet, Caroline Deforge,Michel Nemesien
-        </p>
-        <h3> Budget - Comptabilité </h3>
-        <p>
-            Michel Nemesien
-        </p>
-        <h3> Relation presse médias </h3>
-        <p>
-            Dominique Nouet
-        </p>
-        <h3> Relation partenaires </h3>
-        <p>
-            Caroline Deforge
-        </p>
-        <h3> Animation artistique </h3>
-        <p>
-            José Cano Lopez
-        </p>
-        <h3>  Coordinate débats et unitées </h3>
-        <p>
-            Aurore Le goff
-        </p>
-        <h3> Organisation logistique et bénévoles</h3>
-        <p>
-            Cédric Ardouin
-        </p>
+
+        {% for title, members in membersOrdered %}
+            <h3>{{ title }}</h3>
+            <div class="members">
+            {% for member in members %}
+                <div class="member">
+                {% if member.mission != null %}
+                    <p class="member-mission">{{ member.mission }}</p>
+                {% endif %}
+                <p class="member-name">{{ member.name }}</p>
+                {% if member.phoneNumber != null %}
+                    <p class="member-contact">tel: {{ member.phoneNumber }}</p>
+                {% endif %}
+                {% if member.email != null %}
+                    <p class="member-contact">e-mail: {{ member.email }}</p>
+                {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+        {% endfor %}
 
         <h2> Programme </h2>
 
