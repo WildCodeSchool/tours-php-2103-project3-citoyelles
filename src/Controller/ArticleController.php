@@ -66,7 +66,14 @@ class ArticleController extends AbstractController
 
             $this->addFlash('success', "L'article a bien été créé.");
 
-            return $this->redirectToRoute($articleRequest['article']['type']);
+            switch ($articleRequest['article']['type']) {
+                case 'festivelles':
+                    return $this->redirectToRoute('festivelles');
+                case 'citoyelles':
+                    return $this->redirectToRoute('actuelles');
+                case 'portrelles':
+                    return $this->redirectToRoute('actuelles');
+            }
         }
 
         return $this->render('article/new.html.twig', [
