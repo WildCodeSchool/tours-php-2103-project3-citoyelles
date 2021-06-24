@@ -5,6 +5,25 @@
     --line-height: 1.5;
 }
 
+@font-face {
+    font-family: 'Segoe Print';
+    src: url(/public/polices/Segoe_print/Segoe-Print-Font.ttf),
+    url(/public/polices/Segoe_print/Segoe-Print-Font.eot),
+    url(/public/polices/Segoe_print/Segoe-Print-Font.otf),
+    url(/public/polices/Segoe_print/Segoe-Print-Font.svg),
+    url(/public/polices/Segoe_print/Segoe-Print-Font.woff);
+}
+
+@font-face {
+    font-family: 'Virtual Regular';
+    src: url(/public/polices/Virtual_script/Virtual-Regular.ttf),
+    url(/public/polices/Virtual_script/Virtual-Regular.eot),
+    url(/public/polices/Virtual_script/Virtual-Regular.otf),
+    url(/public/polices/Virtual_script/Virtual-Regular.svg),
+    url(/public/polices/Virtual_script/Virtual-Regular.woff);
+}
+
+
 
 /* reset CSS */
 
