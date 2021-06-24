@@ -229,16 +229,16 @@ footer img {
 }
 
 .member-mission {
-    font-size: 14px;
+    font-size: min(calc(8px + 0.6vw), 14px);
     font-weight: 700;
 }
 
 .member-name {
-    font-size: 14px;
+    font-size: min(calc(8px + 0.8vw), 16px);
 }
 
 .member-contact {
-    font-size: 12px;
+    font-size: min(calc(8px + 0.6vw), 14px);
 }
 
 
