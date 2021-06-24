@@ -94,7 +94,6 @@
         <p>
 
         <ul>
-        
             {% for article in articles %}
             {% if article.imageFilename != null %}
             <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">

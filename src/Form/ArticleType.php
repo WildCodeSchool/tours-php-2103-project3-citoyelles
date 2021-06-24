@@ -37,6 +37,7 @@ class ArticleType extends AbstractType
                     ])
                 ]
             ])
+            ->add('ytLink', TextType::class)
             ->add('content', TextareaType::class)
             ->add('type', ChoiceType::class, [
                 'choices' => [

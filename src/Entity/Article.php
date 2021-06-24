@@ -54,6 +54,11 @@ class Article
      */
     private string $type;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string $ytLink;
+
     public function __construct()
     {
         $this->date = new DateTime();
@@ -121,6 +126,18 @@ class Article
     public function setImageFilename(?string $imageFilename): self
     {
         $this->imageFilename = $imageFilename;
+
+        return $this;
+    }
+
+    public function getYtLink(): ?string
+    {
+        return $this->ytLink;
+    }
+
+    public function setYtLink(?string $ytLink): self
+    {
+        $this->ytLink = $ytLink;
 
         return $this;
     }

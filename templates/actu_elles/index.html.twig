@@ -9,7 +9,6 @@
         <h2> Citoy'Elles </h2>
         <img src="images/L'actualité de Citoy'Elles.jpg" alt="logo" class="logo_citoyelles">
         <h3> Dossiers et actualités de votre association </h3>
-        
             <ul>
                     {% for article in articles %}
                     {% if article.imageFilename != null %}
@@ -28,12 +27,12 @@
    {% for portrait in portraits %}
 
         <h2>{{ portrait.title }}</h2>
-
         <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}">
+        {{ dump(portrait.ytLink) }}
+        <iframe width="560" height="315" src="{{ portrait.ytLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p>
-
         </ul>
-                    <pre>{{ portrait.content }}</pre>
+            <pre>{{ portrait.content }}</pre>
         </p>
         {% endfor %}
 
