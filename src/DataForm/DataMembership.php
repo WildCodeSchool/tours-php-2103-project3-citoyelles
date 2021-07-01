@@ -17,7 +17,7 @@ class DataMembership
         return $this->membershipFile;
     }
 
-    public function setMembershipFile($membershipFile): self
+    public function setMembershipFile(UploadedFile $membershipFile): self
     {
         $this->membershipFile = $membershipFile;
         return $this;
