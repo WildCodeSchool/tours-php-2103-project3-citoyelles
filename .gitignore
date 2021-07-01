@@ -28,3 +28,4 @@ yarn-error.log
 ###< squizlabs/php_codesniffer ###
 
 /public/uploads/pdf/
+/public/uploads/images/

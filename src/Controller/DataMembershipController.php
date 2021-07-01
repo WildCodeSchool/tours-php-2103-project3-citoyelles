@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Membership;
-use App\Form\MembershipType;
-use Doctrine\ORM\EntityManagerInterface;
+use App\DataForm\DataMembership;
+use App\Form\DataMembershipType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -13,36 +12,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
-class MembershipController extends AbstractController
+class DataMembershipController extends AbstractController
 {
     /**
      * @Route("/new_membership", name="new_membership")
      */
     public function new(
-        Request $request,
-        EntityManagerInterface $entityManager,
-        SluggerInterface $slugger
+        Request $request
     ): Response {
-        $membership = new Membership();
-        $form = $this->createForm(MembershipType::class, $membership);
+        $membership = new DataMembership();
+        $form = $this->createForm(DataMembershipType::class, $membership);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $pdfFile */
-            $pdfFile = $form->get('pdf')->getData();
+            $pdfFile = $form->get('membershipFile')->getData();
             if ($pdfFile !== null) {
-                $originalFilename = pathinfo($pdfFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $pdfFile->guessExtension();
-
                 try {
                     $directory = $this->getParameter('pdf_directory');
                     if (is_string($directory)) {
                         $pdfFile->move(
                             $directory,
-                            $newFilename
+                            'membership.pdf'
                         );
                     } else {
                         throw new HttpException(
@@ -58,10 +50,8 @@ class MembershipController extends AbstractController
                 } catch (ServiceNotFoundException $e) {
                     throw $e;
                 }
-                $membership->setPdfFilename($newFilename);
+                $membership->setMembershipFile($pdfFile);
             }
-            $entityManager->persist($membership);
-            $entityManager->flush();
 
             $this->addFlash('success', "Le bulletin d'adhésion a bien été mis à jour.");
 
