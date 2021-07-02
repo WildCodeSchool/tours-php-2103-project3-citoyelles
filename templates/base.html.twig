@@ -23,13 +23,17 @@
 		<div class="main-flex-container">
 			<nav class="sidenav">
 				<ul>
+					{# Affichage des liens #}
 					<li id="closebtnli"><a href="javascript:void(0)" class="closebtn">&times;</a></li>
 					<li><a href="{{ path("home") }}">Accueil</a></li>
 					<li><a href="{{ path("about") }}">À propos</a></li>
 					<li><a href="{{ path("festiv_elles") }}">Festiv'Elles du livre</a></li>
 					<li><a href="{{ path("meetings") }}">Les Rencontres Citoy'Elles</a></li>
-					<li><a href="{{ path("edit_elles") }} ">L'Edit'Elles du lundi</a></li>
+					<li><a href="{{ path("edit_elles") }}">L'Edit'Elles du lundi</a></li>
 					<li><a href="{{ path("actu_elles") }}">Actu'Elles</a></li>
+					{% if "ROLE_ADMIN" in app.user.roles  %}
+						{# Affichage des liens d'administration #}
+					{% endif %}
 				</ul>
 			</nav>
 			<main>
