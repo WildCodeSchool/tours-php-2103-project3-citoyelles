@@ -100,15 +100,20 @@
 
             <ul>
                 {% for article in articles %}
-                {% if article.imageFilename != null %}
-                <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
-                <h2>{{ article.title }}</h2>
-                <p>Publié le {{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
-                <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}" style="width: 30%; margin: auto">
-                {% endif %}
-                <p>
-                    <pre>{{ article.content }}</pre>
-                </p>
+                <li>
+                    <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+                    <h2>{{ article.title }}</h2>
+                    <p>Publié le {{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
+                    {% if article.imageFilename != null %}
+                    <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}" style="width: 30%; margin: auto">
+                    {% endif %}
+                    {% if article.youTubeLink != null %}
+                    <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {% endif %}
+                    <p>
+                        <pre>{{ article.content }}</pre>
+                    </p>
+                </li>
                 {% endfor %}
             </ul>
         </section>
