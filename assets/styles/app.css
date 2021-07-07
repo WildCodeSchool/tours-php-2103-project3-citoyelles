@@ -86,6 +86,22 @@ p {
     font-size: min(calc(8px + 1vw), 18px);
 }
 
+/* flash message */
+
+#flashMessage {
+    margin: auto;
+    z-index: 100;
+    width: 50%;
+    height: 100px;
+    background-color: yellowgreen;
+    color: white;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    border: 3px solid var(--police-color);
+    border-radius: 4px;
+}
 
 /* top button */
 
