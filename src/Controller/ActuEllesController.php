@@ -30,6 +30,4 @@ class ActuEllesController extends AbstractController
             'portraits' => $portraits
         ]);
     }
-
-
 }
