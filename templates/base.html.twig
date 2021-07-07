@@ -33,8 +33,13 @@
 				</ul>
 			</nav>
 			<main>
-			{% block body %}{% endblock %}
-			</main>
+				{% for message in app.flashes('success') %}
+					<div id="flashMessage">
+						{{ message }}
+					</div>
+				{% endfor %}
+				{% block body %}{% endblock %}
+				</main>
 		</div>
 		<button id="myBtn" title="Go to top">&uArr;</button>
 		<footer>
