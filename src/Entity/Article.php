@@ -57,7 +57,7 @@ class Article
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $ytLink;
+    private ?string $youTubeLink;
 
     public function __construct()
     {
@@ -130,14 +130,14 @@ class Article
         return $this;
     }
 
-    public function getYtLink(): ?string
+    public function getYouTubeLink(): ?string
     {
-        return $this->ytLink;
+        return $this->youTubeLink;
     }
 
-    public function setYtLink(?string $ytLink): self
+    public function setYouTubeLink(?string $youTubeLink): self
     {
-        $this->ytLink = $ytLink;
+        $this->youTubeLink = $youTubeLink;
 
         return $this;
     }
