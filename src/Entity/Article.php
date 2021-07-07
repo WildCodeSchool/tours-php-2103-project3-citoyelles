@@ -3,13 +3,20 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @UniqueEntity("title")
+ * @UniqueEntity("content")
  */
 class Article
 {
+    public const TYPES = ["festivelles", "citoyelles", "portrelles"];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -19,28 +26,44 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private string $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $image;
+    private ?string $imageFilename;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private string $content;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     private \DateTimeInterface $date;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank()
+     * @Assert\Choice(choices=Article::TYPES, message="Choisissez un type valide.")
      */
-    private array $type = [];
+    private string $type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ytLink;
+
+    public function __construct()
+    {
+        $this->date = new DateTime();
+    }
+
 
     public function getId(): ?int
     {
@@ -55,18 +78,6 @@ class Article
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -95,14 +106,38 @@ class Article
         return $this;
     }
 
-    public function getType(): ?array
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(array $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename(?string $imageFilename): self
+    {
+        $this->imageFilename = $imageFilename;
+
+        return $this;
+    }
+
+    public function getYtLink(): ?string
+    {
+        return $this->ytLink;
+    }
+
+    public function setYtLink(?string $ytLink): self
+    {
+        $this->ytLink = $ytLink;
 
         return $this;
     }
