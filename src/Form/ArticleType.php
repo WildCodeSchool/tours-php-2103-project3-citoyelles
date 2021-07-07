@@ -37,7 +37,10 @@ class ArticleType extends AbstractType
                     ])
                 ]
             ])
-            ->add('ytLink', TextType::class,['required' => false])
+            ->add('ytLink', TextType::class, [
+                'required' => false,
+                'label' => 'Lien vidéo YouTube',
+            ])
             ->add('content', TextareaType::class)
             ->add('type', ChoiceType::class, [
                 'choices' => [
