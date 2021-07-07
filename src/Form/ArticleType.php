@@ -37,7 +37,7 @@ class ArticleType extends AbstractType
                     ])
                 ]
             ])
-            ->add('ytLink', TextType::class, [
+            ->add('youTubeLink', TextType::class, [
                 'required' => false,
                 'label' => 'Lien vidéo YouTube',
             ])
