@@ -20,9 +20,21 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('type', ChoiceType::class, [
+                'label' => 'Type d\'article :',
+                'choices' => [
+                    'Festiv\'Elles' => Article::TYPES[0],
+                    'Citoy\'Elles' => Article::TYPES[1],
+                    'Portr\'Elles' => Article::TYPES[2]
+                ],
+                'expanded' => true,
+                'multiple' => false
+            ])
+            ->add('title', TextType::class, [
+                'label' => 'Titre : '
+            ])
             ->add('image', FileType::class, [
-                'label' => 'Image (GIF, JPG, JPEG, PNG)',
+                'label' => 'Image (GIF, JPG, JPEG, PNG) : ',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -33,15 +45,10 @@ class ArticleType extends AbstractType
             ])
             ->add('youTubeLink', TextType::class, [
                 'required' => false,
-                'label' => 'Lien vidéo YouTube',
+                'label' => 'Lien vidéo YouTube : ',
             ])
-            ->add('content', TextareaType::class)
-            ->add('type', ChoiceType::class, [
-                'choices' => [
-                    'Festiv\'Elles' => Article::TYPES[0],
-                    'Citoy\'Elles' => Article::TYPES[1],
-                    'Portr\'Elles' => Article::TYPES[2]
-                ]
+            ->add('content', TextareaType::class, [
+                'label' => 'Texte : '
             ])
         ;
     }
