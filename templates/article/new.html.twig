@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Article{% endblock %}
+
+{% block body %}
+    <h1>Nouvel Article :</h1>
+    {{ include('article/_form.html.twig') }}
+    <p>
+        {{ error }}
+    </p>
+    <a href="{{ path('home') }}">Accueil</a>
+{% endblock %}
