@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EditEllesController extends AbstractController
 {
     /**
-     * @Route("/editelles", name="edit_elles")
+     * @Route("/editelles", name="editelles")
      */
     public function index(): Response
     {
