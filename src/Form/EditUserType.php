@@ -13,12 +13,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class EditUserType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('oldUsername', TextType::class, [
                 'required' => false,
-                'attr' => ['class' =>'form-control']
+                'attr' => ['class' => 'form-control']
             ])
             ->add('newUsername', RepeatedType::class, [
                 'type' => TextType::class,
@@ -30,33 +30,32 @@ class EditUserType extends AbstractType
                 ],
                 'invalid_message' => 'Les deux noms d\'utilisateur doivent être identiques',
                 'options' => [
-                    'attr' => ['class' =>'form-control']
+                    'attr' => ['class' => 'form-control']
                 ],
                 'required' => false,
 
             ])
             ->add('oldPassword', PasswordType::class, [
                 'required' => false,
-                'attr' => ['class' =>'form-control']
+                'attr' => ['class' => 'form-control']
             ])
             ->add('newPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
                     'label' => 'Nouveau mot de passe',
-                    
                 ],
                 'second_options' => [
                     'label' => 'Valider votre mot de passe',
                 ],
                 'options' => [
-                    'attr' => ['class' =>'form-control']
+                    'attr' => ['class' => 'form-control']
                 ],
                 'required' => false
             ])
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => UserService::class,
