@@ -6,22 +6,44 @@
 
 {% block body %}
 
-        <h1> Actu'Elles </h1>
-
-    <h2>Port'Elles</h2>
-
-        <article class = "portelles" >
-        <img src="" alt="Portrait" class="portrait_femme">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Dolorum assumenda aliquid, quo illo quisquam similique eligendi facilis! Dolore iste fugiat perferendis,
-            accusantium quod veniam ducimus dolorem laborum, repellat aliquid error sit, repudiandae hic cum quibusdam.
-            Maxime vitae sit commodi porro iste sapiente, possimus natus sed dolorem veniam, inventore, quibusdam voluptatum!
-        </p>
-      </article>
-
         <h2> Citoy'Elles </h2>
-            <img src="images/itoy'elles (8).png" alt="logo" class="logo_citoyelles">
+        <img src="images/L'actualité de Citoy'Elles.jpg" alt="logo" class="logo_citoyelles">
         <h3> Dossiers et actualités de votre association </h3>
-        <p>  </p>
+        <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+        <ul>
+            <li>
+                {% for article in articles %}
+                <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+                {% if article.imageFilename != null %}
+                <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+                {% endif %}
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
+                <p>
+                    <pre>{{ article.content }}</pre>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+
+
+    <h2>Portr'Elles</h2>
+    <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+   {% for portrait in portraits %}
+   <a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
+        <h2>{{ portrait.title }}</h2>
+        {% if portrait.imageFilename != null %}
+        <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
+        {% endif %}
+        {% if portrait.youTubeLink != null %}
+        <iframe width="560" height="315" src="{{ portrait.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% endif %}
+        <p>
+        </ul>
+            <pre>{{ portrait.content }}</pre>
+        </p>
+        {% endfor %}
+
+
+
     {% endblock %}
