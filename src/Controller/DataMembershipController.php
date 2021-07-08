@@ -27,7 +27,7 @@ class DataMembershipController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $pdfFile */
-            $pdfFile = $form->get('membershipFile')->getData();
+            $pdfFile = $membership->getMembershipFile();
             if ($pdfFile !== null) {
                 try {
                     $directory = $this->getParameter('pdf_directory');
