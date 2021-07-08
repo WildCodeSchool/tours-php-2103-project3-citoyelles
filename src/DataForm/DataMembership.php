@@ -9,6 +9,11 @@ class DataMembership
 {
     /**
      * @Assert\NotBlank
+     * @Assert\File(
+     * maxSize = "512k",
+     * mimeTypes = {"application/pdf", "application/x-pdf"},
+     * mimeTypesMessage = "Veuillez déposer un fichier PDF valide."
+     * )
      */
     private UploadedFile $membershipFile;
 

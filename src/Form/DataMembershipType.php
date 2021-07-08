@@ -15,17 +15,8 @@ class DataMembershipType extends AbstractType
     {
         $builder
             ->add('membershipFile', FileType::class, [
-                'label' => 'Bulletin d\'adhésion (PDF) : ',
-                'required' => true,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '512k',
-                        'mimeTypes' => [
-                            'application/pdf'
-                        ],
-                        'mimeTypesMessage' => 'Veuillez enregistrer un PDF valide.',
-                    ])
-                ]
+                'label' => 'Bulletin d\'adhésion (PDF : 512 kiloOctets Max.) : ',
+                'required' => true
             ]);
     }
 
