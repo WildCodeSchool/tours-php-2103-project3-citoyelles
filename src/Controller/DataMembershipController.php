@@ -50,7 +50,6 @@ class DataMembershipController extends AbstractController
                 } catch (ServiceNotFoundException $e) {
                     throw $e;
                 }
-                $membership->setMembershipFile($pdfFile);
             }
 
             $this->addFlash('success', "Le bulletin d'adhésion a bien été mis à jour.");
