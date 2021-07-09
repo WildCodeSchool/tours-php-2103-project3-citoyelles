@@ -4,12 +4,15 @@ namespace App\Entity;
 
 use App\Repository\CalendarRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CalendarRepository::class)
  */
 class Calendar
 {
+    public const TYPES = ["festivelles", "rencontres", "citoyelles"];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -19,21 +22,25 @@ class Calendar
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private string $title;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
      */
     private \DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private string $content;
+    private ?string $content;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Choice(choices=Calendar::TYPES, message="Choisissez un type valide.")
      */
     private string $type;
 
