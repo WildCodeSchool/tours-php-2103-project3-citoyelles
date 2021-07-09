@@ -13,10 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CalendarType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type', ChoiceType::class,[
+            ->add('type', ChoiceType::class, [
                 'label' => "Type d'évènement : ",
                 'choices' => [
                     "Festiv'Elles" => Calendar::TYPES[0],
@@ -39,7 +39,7 @@ class CalendarType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Calendar::class,
