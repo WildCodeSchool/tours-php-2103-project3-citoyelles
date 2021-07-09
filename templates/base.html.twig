@@ -25,12 +25,12 @@
 				<ul>
 					{# Affichage des liens #}
 					<li id="closebtnli"><a href="javascript:void(0)" class="closebtn">&times;</a></li>
-					<li><a href="{{ path("home") }}">Accueil</a></li>
-					<li><a href="{{ path("about") }}">À propos</a></li>
-					<li><a href="{{ path("festivelles") }}">Festiv'Elles du livre</a></li>
-					<li><a href="{{ path("meetings") }}">Les Rencontres Citoy'Elles</a></li>
-					<li><a href="{{ path("editelles") }} ">L'Edit'Elles du lundi</a></li>
-					<li><a href="{{ path("actuelles") }}">Actu'Elles</a></li>
+					<li><a class="nav-link" href="{{ path("home") }}">Accueil</a></li>
+					<li><a class="nav-link" href="{{ path("about") }}">À propos</a></li>
+					<li><a class="nav-link" href="{{ path("festivelles") }}">Festiv'Elles du livre</a></li>
+					<li><a class="nav-link" href="{{ path("meetings") }}">Les Rencontres Citoy'Elles</a></li>
+					<li><a class="nav-link" href="{{ path("editelles") }} ">L'Edit'Elles du lundi</a></li>
+					<li><a class="nav-link" href="{{ path("actuelles") }}">Actu'Elles</a></li>
 				</ul>
 				<div class="auth">
 				{% if app.user %}

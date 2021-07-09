@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -108,5 +110,21 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public static function createFirstUser(UserPasswordEncoderInterface $passwordEncoder, ObjectManager $manager): void
+    {
+        $admin = new User();
+        $admin->setUsername('admin');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setPassword($passwordEncoder->encodePassword(
+            $admin,
+            'adminpassword'
+        ));
+
+        $manager->persist($admin);
+
+        // Sauvegarde du nouvelle utilisateur :
+        $manager->flush();
     }
 }
