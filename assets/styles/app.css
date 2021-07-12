@@ -7,22 +7,13 @@
 
 @font-face {
     font-family: 'Segoe Print';
-    src: url(/public/polices/Segoe_print/Segoe-Print-Font.ttf),
-    url(/public/polices/Segoe_print/Segoe-Print-Font.eot),
-    url(/public/polices/Segoe_print/Segoe-Print-Font.otf),
-    url(/public/polices/Segoe_print/Segoe-Print-Font.svg),
-    url(/public/polices/Segoe_print/Segoe-Print-Font.woff);
+    src: url(/public/polices/Segoe_print/Segoe-Print-Font.ttf), url(/public/polices/Segoe_print/Segoe-Print-Font.eot), url(/public/polices/Segoe_print/Segoe-Print-Font.otf), url(/public/polices/Segoe_print/Segoe-Print-Font.svg), url(/public/polices/Segoe_print/Segoe-Print-Font.woff);
 }
 
 @font-face {
     font-family: 'Virtual Regular';
-    src: url(/public/polices/Virtual_script/Virtual-Regular.ttf),
-    url(/public/polices/Virtual_script/Virtual-Regular.eot),
-    url(/public/polices/Virtual_script/Virtual-Regular.otf),
-    url(/public/polices/Virtual_script/Virtual-Regular.svg),
-    url(/public/polices/Virtual_script/Virtual-Regular.woff);
+    src: url(/public/polices/Virtual_script/Virtual-Regular.ttf), url(/public/polices/Virtual_script/Virtual-Regular.eot), url(/public/polices/Virtual_script/Virtual-Regular.otf), url(/public/polices/Virtual_script/Virtual-Regular.svg), url(/public/polices/Virtual_script/Virtual-Regular.woff);
 }
-
 
 
 /* reset CSS */
@@ -342,16 +333,28 @@ footer img {
         display: flex;
     }
     .sidenav {
+        position: sticky;
         width: 400px;
         min-width: 400px;
+        min-height: 100vh;
         border-right: 1px solid var(--title-color);
         background-color: var(--article-color);
     }
     .sidenav ul {
         padding: 0;
         margin: 0;
+        min-height: 100vh;
         position: sticky;
         top: 0;
+    }
+    .auth {
+        position: sticky;
+        top: calc(100vh - 1.5em);
+        text-align: center;
+    }
+    .auth-link {
+        color: var(--title-color);
+        text-decoration: none;
     }
     .sidenav li {
         list-style: none;
@@ -360,7 +363,7 @@ footer img {
         padding-left: 40px;
         border-bottom: 1px solid var(--title-color);
     }
-    .sidenav a {
+    .sidenav .nav-link {
         display: block;
         text-decoration: none;
         color: var(--title-color);
