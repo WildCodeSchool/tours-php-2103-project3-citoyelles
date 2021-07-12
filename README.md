@@ -35,7 +35,7 @@ It's symfony website-skeleton project with some additional tools to validate cod
 *Option :*
 5. If you encounter this error message : <u>"Only the ‘en’ locale is supported. Please install the ‘intl’ extension for full localization capabilities.</u>"  
 Please read [Twig > Docs > Filters > format_datetime](https://twig.symfony.com/doc/3.x/filters/format_datetime.html)  
-5.1. Install php7.4-intl module : `sudo apt install php7.4-intl` (If you run php7.4...)
+5.1. Install php7.4-intl module : `sudo apt install php7.4-intl` (If you run php7.4...)  
 5.2 Restart server if necessary : `symfony server:start`
 
 ### Working
