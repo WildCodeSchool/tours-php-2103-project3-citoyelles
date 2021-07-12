@@ -179,6 +179,27 @@ footer img {
     align-self: center;
 }
 
+.membership a {
+    display: block;
+    text-align: center;
+}
+
+.membership a:nth-child(2) {
+    border: 3px solid white;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.membership a:nth-child(2):hover {
+    color: var(--title-color);
+    background-color: #fff;
+}
+
+.membership a:nth-child(2):active {
+    opacity: 0.5;
+}
+
 
 /* index -------------------------------------------------------*/
 

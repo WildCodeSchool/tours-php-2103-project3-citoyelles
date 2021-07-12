@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau bulletin d'adhésion{% endblock %}
+
+{% block body %}
+    <h1>Nouveau bulletin d'adhésion :</h1>
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Valider">
+    {{ form_end(form) }}
+    <p>
+        {{ error }}
+    </p>
+{% endblock %}
