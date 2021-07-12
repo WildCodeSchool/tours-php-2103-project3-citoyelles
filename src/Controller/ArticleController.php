@@ -126,6 +126,8 @@ class ArticleController extends AbstractController
             switch ($articleType) {
                 case 'festivelles':
                     return $this->redirectToRoute('festivelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('rencontres');
                 case 'citoyelles':
                     return $this->redirectToRoute('actuelles');
                 case 'portrelles':
