@@ -9,11 +9,15 @@
         <h2> Citoy'Elles </h2>
         <img src="images/L'actualité de Citoy'Elles.jpg" alt="logo" class="logo_citoyelles">
         <h3> Dossiers et actualités de votre association </h3>
+        {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+        {% endif %}
         <ul>
             <li>
                 {% for article in articles %}
+                {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+                {% endif %}
                 {% if article.imageFilename != null %}
                 <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
                 {% endif %}
@@ -28,21 +32,25 @@
 
 
     <h2>Portr'Elles</h2>
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
-   {% for portrait in portraits %}
-   <a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
-        <h2>{{ portrait.title }}</h2>
-        {% if portrait.imageFilename != null %}
-        <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
-        {% endif %}
-        {% if portrait.youTubeLink != null %}
-        <iframe width="560" height="315" src="{{ portrait.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        {% endif %}
-        <p>
-        </ul>
-            <pre>{{ portrait.content }}</pre>
-        </p>
-        {% endfor %}
+    {% endif %}
+    {% for portrait in portraits %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
+    {% endif %}
+    <h2>{{ portrait.title }}</h2>
+    {% if portrait.imageFilename != null %}
+    <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
+    {% endif %}
+    {% if portrait.youTubeLink != null %}
+    <iframe width="560" height="315" src="{{ portrait.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% endif %}
+    <p>
+    </ul>
+        <pre>{{ portrait.content }}</pre>
+    </p>
+    {% endfor %}
 
 
 
