@@ -35,23 +35,25 @@
     {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
     {% endif %}
-    {% for portrait in portraits %}
-    {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
-    {% endif %}
-    <h2>{{ portrait.title }}</h2>
-    {% if portrait.imageFilename != null %}
-    <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
-    {% endif %}
-    {% if portrait.youTubeLink != null %}
-    <iframe width="560" height="315" src="{{ portrait.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    {% endif %}
-    <p>
+    <ul>
+        {% for portrait in portraits %}
+        <li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
+            {% endif %}
+            <h2>{{ portrait.title }}</h2>
+            {% if portrait.imageFilename != null %}
+            <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
+            {% endif %}
+            {% if portrait.youTubeLink != null %}
+            <iframe width="560" height="315" src="{{ portrait.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endif %}
+            <p>
+                <pre>{{ portrait.content }}</pre>
+            </p>
+        </li>
+        {% endfor %}
     </ul>
-        <pre>{{ portrait.content }}</pre>
-    </p>
-    {% endfor %}
-
 
 
     {% endblock %}
