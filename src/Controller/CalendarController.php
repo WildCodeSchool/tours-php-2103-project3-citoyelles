@@ -39,7 +39,16 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
-            return $this->redirectToRoute('index_calendar');
+            $this->addFlash('success', "L'évènement a bien été créé.");
+
+            switch ($calendar->getType()) {
+                case 'festivelles':
+                    return $this->redirectToRoute('festivelles');
+                case 'citoyelles':
+                    return $this->redirectToRoute('actuelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
+            }
         }
 
         return $this->render('calendar/new.html.twig', [
@@ -69,7 +78,16 @@ class CalendarController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('index_calendar');
+            $this->addFlash('success', "L'évènement a bien été modifié.");
+
+            switch ($calendar->getType()) {
+                case 'festivelles':
+                    return $this->redirectToRoute('festivelles');
+                case 'citoyelles':
+                    return $this->redirectToRoute('actuelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
+            }
         }
 
         return $this->render('calendar/edit.html.twig', [
@@ -87,8 +105,19 @@ class CalendarController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($calendar);
             $entityManager->flush();
+
+            $this->addFlash('success', "L'évènement a bien été créé.");
+
+            switch ($calendar->getType()) {
+                case 'festivelles':
+                    return $this->redirectToRoute('festivelles');
+                case 'citoyelles':
+                    return $this->redirectToRoute('actuelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
+            }
         }
 
-        return $this->redirectToRoute('index_calendar');
+        throw $this->createAccessDeniedException('Erreur 403 : Vous êtes en train de faire quelque chose d\'interdit.');
     }
 }
