@@ -40,7 +40,7 @@ class CalendarType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Le texte est optionnel.',
                     'rows' => 12,
-                    'cols' => 28
+                    'cols' => 26
                     ]
             ])
         ;
