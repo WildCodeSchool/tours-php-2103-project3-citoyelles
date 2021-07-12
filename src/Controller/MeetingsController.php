@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,8 +12,14 @@ class MeetingsController extends AbstractController
     /**
      * @Route("/meetings", name="meetings")
      */
-    public function meetings(): Response
+    public function meetings(ArticleRepository $articleRepository): Response
     {
-        return $this->render('meetings/meetings.html.twig');
+        $articles = $articleRepository->findBy(
+            ['type' => 'rencontres'],
+            ['date' => 'DESC']
+        );
+        return $this->render('meetings/meetings.html.twig', [
+            'articles' => $articles
+        ]);
     }
 }
