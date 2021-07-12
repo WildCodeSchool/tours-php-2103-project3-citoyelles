@@ -28,13 +28,20 @@ class CalendarType extends AbstractType
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titre : ',
+                'attr' => ['placeholder' => 'Saisissez le titre.']
             ])
             ->add('date', DateTimeType::class, [
-                'label' => 'Date : '
+                'label' => 'Date : ',
+                'date_widget' => 'single_text'
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Texte (optionnel) : ',
-                'required' => false
+                'label' => 'Texte : ',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Le texte est optionnel.',
+                    'rows' => 12,
+                    'cols' => 28
+                    ]
             ])
         ;
     }

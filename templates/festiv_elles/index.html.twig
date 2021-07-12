@@ -71,11 +71,11 @@
             <ul>
                 {% for event in events %}
                 <li>
-                    <h3>{{ event.date|format_datetime('full', 'short', locale='fr') }}</h3>
+                    <h3>{{ event.date|format_datetime('full', 'none', locale='fr') }}</h3>
                     <p>
-                        {{ event.title }},
+                        {{ event.title }}
                         {% if event.content != null %}
-                        {{ event.content }}
+                        <pre>{{ event.content }}</pre>
                         {% endif %}
                     </p>
                     <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>
