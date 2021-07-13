@@ -20,13 +20,16 @@ class MemberType extends AbstractType
                 'label' => 'Intitulé : '
             ])
             ->add('mission', TextType::class, [
-                'label' => 'Mission : '
+                'label' => 'Mission : ',
+                'required' => false
             ])
             ->add('phoneNumber', TextType::class, [
-                'label' => 'Numéro de téléphone : '
+                'label' => 'Numéro de téléphone : ',
+                'required' => false
             ])
             ->add('email', TextType::class, [
-                'label' => 'E-mail : '
+                'label' => 'E-mail : ',
+                'required' => false
             ])
         ;
     }

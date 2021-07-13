@@ -16,16 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class MemberController extends AbstractController
 {
     /**
-     * @Route("/", name="member_index", methods={"GET"})
-     */
-    public function index(MemberRepository $memberRepository): Response
-    {
-        return $this->render('member/index.html.twig', [
-            'members' => $memberRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="member_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -39,22 +29,12 @@ class MemberController extends AbstractController
             $entityManager->persist($member);
             $entityManager->flush();
 
-            return $this->redirectToRoute('member_index');
+            return $this->redirectToRoute('festivelles');
         }
 
         return $this->render('member/new.html.twig', [
             'member' => $member,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="member_show", methods={"GET"})
-     */
-    public function show(Member $member): Response
-    {
-        return $this->render('member/show.html.twig', [
-            'member' => $member,
         ]);
     }
 
@@ -69,7 +49,7 @@ class MemberController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('member_index');
+            return $this->redirectToRoute('festivelles');
         }
 
         return $this->render('member/edit.html.twig', [
@@ -89,6 +69,6 @@ class MemberController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('member_index');
+        return $this->redirectToRoute('festivelles');
     }
 }
