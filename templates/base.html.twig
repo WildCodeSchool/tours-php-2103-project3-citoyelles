@@ -34,19 +34,28 @@
 				</ul>
 				<div class="auth">
 				{% if app.user %}
-					<a class="auth-link" href="{{ path("app_logout") }}">Se déconnecter</a>
+					<a class="auth-link" href="{{ path("app_logout") }}">Se déconnecter</a><br>
+					<a class="auth-link" href="{{ path("edit_user") }}">Modifier le compte</a>
 				{% else %}
 					<a class="auth-link" href="{{ path("app_login") }}">Se connecter</a>
 				{% endif %}
 				</div>
 			</nav>
 			<main>
-				{% for message in app.flashes('success') %}
-					<div id="flashMessage">
-						{{ message }}
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							{% for label, messages in app.flashes %}
+								{% for message in messages %}
+									<div id="flashMessage" class="alert-{{ label }}">
+										{{ message }}
+									</div>
+								{% endfor %}
+							{% endfor %}
+						</div>
 					</div>
-				{% endfor %}
-				{% block body %}{% endblock %}
+				</div>
+			{% block body %}{% endblock %}
 			</main>
 		</div>
 		<button id="myBtn" title="Go to top">&uArr;</button>
