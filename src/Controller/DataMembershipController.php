@@ -12,11 +12,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class DataMembershipController extends AbstractController
 {
     /**
      * @Route("/new_membership", name="new_membership")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(
         Request $request

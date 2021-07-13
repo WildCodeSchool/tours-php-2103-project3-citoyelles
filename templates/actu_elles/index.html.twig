@@ -9,14 +9,18 @@
 <div class = "citoyellesFlex">
         <div class="citoyellesArticle">
         <img src="images/L'actualité de Citoy'Elles.jpg" alt="logo" class="logo_citoyelles">
+
         <h3> Les actualités de votre association </h3>
             {% if is_granted('ROLE_ADMIN') %}
+
         <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
         {% endif %}
         <ul>
             <li>
                 {% for article in articles %}
+                {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+                {% endif %}
                 {% if article.imageFilename != null %}
                 <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
                 {% endif %}
@@ -58,6 +62,7 @@
 
     <h2>Portr'Elles</h2>
     {% if is_granted('ROLE_ADMIN') %}
+
         <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
     {% endif %}
    {% for portrait in portraits %}
@@ -76,7 +81,7 @@
             <pre>{{ portrait.content }}</pre>
         </p>
         {% endfor %}
-
+    </ul>
 
 
     {% endblock %}
