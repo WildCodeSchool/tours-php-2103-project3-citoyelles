@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des évènements{% endblock %}
+
+{% block body %}
+    <h1>Liste de tous les évènements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Content</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for calendar in calendars %}
+            <tr>
+                <td>{{ calendar.title }}</td>
+                <td>{{ calendar.date|format_datetime('full', 'short', locale='fr') }}</td>
+                <td>{{ calendar.content }}</td>
+                <td>{{ calendar.type }}</td>
+                <td>
+                    <a href="{{ path('show_calendar', {'id': calendar.id}) }}">Voir</a>
+                    <a href="{{ path('edit_calendar', {'id': calendar.id}) }}">Modifier/Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun évènement pour le moment.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('new_calendar') }}">Nouvel évènement</a>
+{% endblock %}

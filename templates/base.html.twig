@@ -81,6 +81,9 @@
 					</div>
 					<div class="membership">
 						<a href="/uploads/pdf/membership.pdf">Rejoignez-nous</a>
+						{% if is_granted('ROLE_ADMIN') %}
+						<a href="{{ path("new_membership") }}">Nouveau bulletin d'adhésion</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
