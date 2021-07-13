@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use App\Repository\CalendarRepository;
+use App\Entity\Member;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,9 +24,15 @@ class FestivEllesController extends AbstractController
             ['type' => 'festivelles'],
             ['date' => 'ASC']
         );
+        $members = $this->getDoctrine()->getRepository(Member::class)->findBy([], ["title" => "ASC"]);
+        $membersOrdered = [];
+        foreach ($members as $member) {
+            $membersOrdered[$member->getTitle()][] = $member;
+        }
         return $this->render('festiv_elles/index.html.twig', [
             'articles' => $articles,
-            'events' => $events
+            'events' => $events,
+            'membersOrdered' => $membersOrdered
         ]);
     }
 }

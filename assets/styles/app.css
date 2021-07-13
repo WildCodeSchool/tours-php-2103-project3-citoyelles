@@ -64,17 +64,17 @@ h1 {
 
 h2 {
     text-align: center;
-    font-size: min(calc(12px + 1vw), 22px);
+    font-size: min(calc(14px + 1vw), 24px);
 }
 
 #infoAndFollowTitle {
-    font-size: min(calc(10px + 1.2vw), 22px);
+    font-size: min(calc(12px + 1.2vw), 24px);
 }
 
 h3,
 p {
     text-align: justify;
-    font-size: min(calc(8px + 1vw), 18px);
+    font-size: min(calc(12px + 1vw), 22px);
 }
 
 /* flash message */
@@ -261,6 +261,38 @@ footer img {
 }
 
 
+/* Festiv'Elles-------------------------------------------------*/
+
+.members {
+    display: grid;
+}
+
+.member {
+    margin-bottom: 15px;
+}
+
+.member * {
+    margin: 0;
+}
+
+.member-mission {
+    font-size: min(calc(10px + 1vw), 20px);
+    font-weight: 700;
+}
+
+.member-name {
+    font-size: min(calc(12px + 1vw), 22px);
+}
+
+.member-contact {
+    font-size: min(calc(10px + 1vw), 20px);
+}
+
+.member-form * {
+    margin: auto;
+}
+
+
 /* Meetings-----------------------------------------------------*/
 
 .article {
@@ -355,6 +387,10 @@ footer img {
         font-size: 36px;
         margin-left: 50px;
     }
+    /* Festiv'Elles-------------------------------------------------*/
+    .members {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (min-width: 901px) {
@@ -407,6 +443,10 @@ footer img {
     .sidenav a:hover {
         font-weight: 600;
     }
+    /* Festiv'Elles-------------------------------------------------*/
+    .members {
+        grid-template-columns: repeat(3, 1fr);
+    }
     @media (max-width: 1200px) {
         .sidenav {
             width: 260px;
@@ -417,6 +457,10 @@ footer img {
         }
         .sidenav a {
             font-size: 16px;
+        }
+        /* Festiv'Elles-------------------------------------------------*/
+        .members {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }

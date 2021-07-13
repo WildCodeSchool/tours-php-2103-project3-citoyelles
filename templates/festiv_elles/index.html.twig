@@ -32,7 +32,29 @@
                 L'autre évènement du Festiv'Elles du Livre sera théatral: une création originale des
                 "Monologues du vagin" que viendront présenter Karine Isambert et ses comédiennes lors
                 des deux représentations en soirée les 9 et 10 septembre.
-            </p>
+        </p>
+
+        <h2> Organigramme </h2>
+
+        {% for title, members in membersOrdered %}
+            <h3>{{ title }}</h3>
+            <div class="members">
+            {% for member in members %}
+                <div class="member">
+                {% if member.mission != null %}
+                    <p class="member-mission">{{ member.mission }}</p>
+                {% endif %}
+                <p class="member-name">{{ member.name }}</p>
+                {% if member.phoneNumber != null %}
+                    <p class="member-contact">tel: {{ member.phoneNumber }}</p>
+                {% endif %}
+                {% if member.email != null %}
+                    <p class="member-contact">e-mail: {{ member.email }}</p>
+                {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+        {% endfor %}
 
             <h2> Organigramme </h2>
             <h3> Direction Générale </h3>
