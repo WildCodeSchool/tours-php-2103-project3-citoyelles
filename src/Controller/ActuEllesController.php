@@ -13,7 +13,7 @@ class ActuEllesController extends AbstractController
     /**
      * @Route("/actuelles", name="actuelles")
      */
-    public function index(ArticleRepository $articleRepository,CalendarRepository $calendarRepository): Response
+    public function index(ArticleRepository $articleRepository, CalendarRepository $calendarRepository): Response
     {
         $articles = $articleRepository->findBy(
             ['type' => 'citoyelles'],

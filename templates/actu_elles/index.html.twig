@@ -10,7 +10,9 @@
         <div class="citoyellesArticle">
         <img src="images/L'actualité de Citoy'Elles.jpg" alt="logo" class="logo_citoyelles">
         <h3> Les actualités de votre association </h3>
+            {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+        {% endif %}
         <ul>
             <li>
                 {% for article in articles %}
@@ -55,9 +57,13 @@
  </div>
 
     <h2>Portr'Elles</h2>
-    <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+    {% endif %}
    {% for portrait in portraits %}
+       {% if is_granted('ROLE_ADMIN') %}
    <a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
+    {% endif %}
         <h2>{{ portrait.title }}</h2>
         {% if portrait.imageFilename != null %}
         <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
