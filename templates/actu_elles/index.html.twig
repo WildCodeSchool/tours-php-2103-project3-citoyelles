@@ -5,10 +5,11 @@
 {% block banner %}<img src="images/Actu'Elles.jpg" alt="bannière actu'elles">{% endblock %}
 
 {% block body %}
-
         <h2> Citoy'Elles </h2>
+<div class = "citoyellesFlex">
+        <div class="citoyellesArticle">
         <img src="images/L'actualité de Citoy'Elles.jpg" alt="logo" class="logo_citoyelles">
-        <h3> Dossiers et actualités de votre association </h3>
+        <h3> Les actualités de votre association </h3>
         <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
         <ul>
             <li>
@@ -25,7 +26,15 @@
             </li>
             {% endfor %}
         </ul>
+        </div>
 
+        <div class="citoyellesCalendar">
+             <h3> Vos Rendez-vous ! </h3>
+
+
+
+        </div>
+ </div>
 
     <h2>Portr'Elles</h2>
     <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
