@@ -30,7 +30,25 @@
 
         <div class="citoyellesCalendar">
              <h3> Vos Rendez-vous ! </h3>
-
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
+    {% endif %}
+            <ul>
+                {% for calendar in calendars %}
+                <li>
+                    <h3>{{ calendar.date|format_datetime('full', 'short', locale='fr') }}</h3>
+                    <p>
+                        {{ calendar.title }}
+                        {% if calendar.content != null %}
+                        <pre>{{ calendar.content }}</pre>
+                        {% endif %}
+                    </p>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('edit_calendar', {'id': calendar.id}) }}" class="adminElement">Modifier/Supprimer « {{ calendar.title }} »</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
 
 
         </div>
