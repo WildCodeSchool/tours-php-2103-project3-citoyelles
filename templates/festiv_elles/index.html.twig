@@ -67,26 +67,22 @@
         <section class="program">
 
             <h2> Programme </h2>
-
-            {#  J'ai mis ce programme pour donner une idée mais il sera modifiable au besoin #}
-
+            <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
             <ul>
-                <li>Vendredi 9 septembre 18h00 - 19h30
-                                Inauguration officielle
-                    21h : Soirée théatre "Les monologues du vagin"
-                </li>
-                <li>Samedi 10
-                    8h00 - 9h30 Accueil et installation des autrices
-                    10h - 19h : ouverture au public
-                    21h: Soirée théatre: "Les monologues du vagin".
-                </li>
-                <li> Dimanche 11
-                    10h - 18h : ouverure au public et clôture du Festiv'Elles
-                    16h - 18h : Compagnie Cano Lopez, spectacle "Les Tour'Ang'Elles".
-                    Durant les journées de samedi
-                </li>
-            </ul>
+                {% for event in events %}
+                <li>
+                    <h3>{{ event.date|format_datetime('full', 'none', locale='fr') }}</h3>
+                    <p>
+                        {{ event.title }}
+                        {% if event.content != null %}
+                        <pre>{{ event.content }}</pre>
+                        {% endif %}
+                    </p>
+                    <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>
 
+                </li>
+                {% endfor %}
+            </ul>
             <h2> Monologues du vagin </h2>
 
             <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero expedita, odit autem laborum voluptas ut,

@@ -5,61 +5,80 @@
 {% block banner %}<img src="images/Actu'Elles.jpg" alt="bannière actu'elles">{% endblock %}
 
 {% block body %}
-
-        <h2> Citoy'Elles </h2>
-        <img src="images/L'actualité de Citoy'Elles.jpg" alt="logo" class="logo_citoyelles">
-        <h3> Dossiers et actualités de votre association </h3>
-        {% if is_granted('ROLE_ADMIN') %}
-        <div class="citoyellesFlex">
-            <div class="citoyellesArticle">
-                <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
-                {% endif %}
-                <ul>
-                    <li>
-                        {% for article in articles %}
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
-                        {% endif %}
-                        {% if article.imageFilename != null %}
-                        <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
-                        {% endif %}
-                        <h2>{{ article.title }}</h2>
-                        <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
-                        <p>
-                            <pre>{{ article.content }}</pre>
-                        </p>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="citoyellesCalendar">
-
-            </div>
-        </div>
-    </div>
-    <h2>Portr'Elles</h2>
-    {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
-    {% endif %}
-    <ul>
-        {% for portrait in portraits %}
-        <li>
+<img src="images/L_actualité_de_Citoy_Elles.jpg" alt="logo" class="logo_citoyelles">
+<h2> Citoy'Elles </h2>
+<div class = "citoyellesFlex">
+    <div class="citoyellesArticle">
+        <h3> Les actualités de votre association </h3>
             {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
-            {% endif %}
-            <h2>{{ portrait.title }}</h2>
-            {% if portrait.imageFilename != null %}
-            <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
-            {% endif %}
-            {% if portrait.youTubeLink != null %}
-            <iframe width="560" height="315" src="{{ portrait.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            {% endif %}
-            <p>
-                <pre>{{ portrait.content }}</pre>
-            </p>
-        </li>
-        {% endfor %}
+
+        <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+        {% endif %}
+        <ul>
+            <li>
+                {% for article in articles %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+                {% endif %}
+                {% if article.imageFilename != null %}
+                <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+                {% endif %}
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
+                <p>
+                    <pre>{{ article.content }}</pre>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="citoyellesCalendar">
+        <h3> Vos Rendez-vous ! </h3>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
+        {% endif %}
+        <ul>
+            {% for calendar in calendars %}
+            <li>
+                <h3>{{ calendar.date|format_datetime('full', 'short', locale='fr') }}</h3>
+                <p>
+                    {{ calendar.title }}
+                    {% if calendar.content != null %}
+                    <pre>{{ calendar.content }}</pre>
+                    {% endif %}
+                </p>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('edit_calendar', {'id': calendar.id}) }}" class="adminElement">Modifier/Supprimer « {{ calendar.title }} »</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<h2>Portr'Elles</h2>
+{% if is_granted('ROLE_ADMIN') %}
+
+    <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a> <br>
+{% endif %}
+{% for portrait in portraits %}
+    {% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('edit_article', {'id': portrait.id}) }}" class="adminElement">Modifier/Supprimer « {{ portrait.title }} »</a>
+{% endif %}
+    <h2>{{ portrait.title }}</h2>
+    {% if portrait.imageFilename != null %}
+    <img src="{{ asset('uploads/images/' ~ portrait.imageFilename) }}" alt="{{ portrait.title }}" class="photo_portrelles" >
+    {% endif %}
+    {% if portrait.youTubeLink != null %}
+    <iframe width="560" height="315" src="{{ portrait.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% endif %}
+    <p>
     </ul>
+        <pre>{{ portrait.content }}</pre>
+    </p>
+    {% endfor %}
+</ul>
 
 
     {% endblock %}
