@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Controller\SecurityController;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
