@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\ArticleRepository;
 use App\Repository\CalendarRepository;
 use App\Entity\Member;
+use App\Repository\MemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,8 +15,11 @@ class FestivEllesController extends AbstractController
     /**
      * @Route("/festivelles", name="festivelles")
      */
-    public function index(ArticleRepository $articleRepository, CalendarRepository $calendarRepository): Response
-    {
+    public function index(
+        ArticleRepository $articleRepository,
+        CalendarRepository $calendarRepository,
+        MemberRepository $memberRepository
+    ): Response {
         $articles = $articleRepository->findBy(
             ['type' => 'festivelles'],
             ['date' => 'DESC']
@@ -24,7 +28,7 @@ class FestivEllesController extends AbstractController
             ['type' => 'festivelles'],
             ['date' => 'ASC']
         );
-        $members = $this->getDoctrine()->getRepository(Member::class)->findBy([], ["title" => "ASC"]);
+        $members = $memberRepository->findBy([], ["title" => "ASC"]);
         $membersOrdered = [];
         foreach ($members as $member) {
             $membersOrdered[$member->getTitle()][] = $member;
