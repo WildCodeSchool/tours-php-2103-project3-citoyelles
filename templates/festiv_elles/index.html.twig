@@ -10,112 +10,112 @@
     <section class="greetings">
         <h2>Présentations </h2>
         <p>
-                Dans un château chargé d'histoire au coeur d'un parc séculaire, Le Festiv'Elles du Livre
-                vous accueillera les 9,10 et 11 septembre 2022. L'espace sera entièrement dédié aux
-                femmes et à l'écrit: des autrices viendront vous raconter leurs livres, leurs parcours et
-                certaines participeront aux débats organisés. Une animation culturelle festive vous
-                racontera par la poësie, la musique, le théatre des histoires de femmes dans un feu
-                d'artifice de mouvement dynamique sous la baguette magique de la Compagnie Cano
-                Lopez.
+            Dans un château chargé d'histoire au coeur d'un parc séculaire, Le Festiv'Elles du Livre
+            vous accueillera les 9,10 et 11 septembre 2022. L'espace sera entièrement dédié aux
+            femmes et à l'écrit: des autrices viendront vous raconter leurs livres, leurs parcours et
+            certaines participeront aux débats organisés. Une animation culturelle festive vous
+            racontera par la poësie, la musique, le théatre des histoires de femmes dans un feu
+            d'artifice de mouvement dynamique sous la baguette magique de la Compagnie Cano
+            Lopez.
         </p>
         <p>
-                Vous y viendrez débattre sur la place des femmes dans la vie de la cité, des inégalités
-                femmes hommes et des droits des femmes si souvent encore maltraités. Aurore le Goff,
-                conférencière et membre de l'ONU femmes Francea animera ces débats et vous guidera
-                au gré des stands durant ces deux jours
-            </p>
+            Vous y viendrez débattre sur la place des femmes dans la vie de la cité, des inégalités
+            femmes hommes et des droits des femmes si souvent encore maltraités. Aurore le Goff,
+            conférencière et membre de l'ONU femmes Francea animera ces débats et vous guidera
+            au gré des stands durant ces deux jours
+        </p>
 
-            <p>
-                Tout sera fait pour vous accueillir dans une ambiance joyeuse sans ne jamais négliger
-                l'importance de l'enjeu premier du Festiv'Elles du Livre: donner aux femmes un espace de
-                visibilité et de paroles. Qoui de mieux que l'écrit, les mots si souvent tus pour y parvenir ?
-                L'autre évènement du Festiv'Elles du Livre sera théatral: une création originale des
-                "Monologues du vagin" que viendront présenter Karine Isambert et ses comédiennes lors
-                des deux représentations en soirée les 9 et 10 septembre.
-            </p>
+        <p>
+            Tout sera fait pour vous accueillir dans une ambiance joyeuse sans ne jamais négliger
+            l'importance de l'enjeu premier du Festiv'Elles du Livre: donner aux femmes un espace de
+            visibilité et de paroles. Qoui de mieux que l'écrit, les mots si souvent tus pour y parvenir ?
+            L'autre évènement du Festiv'Elles du Livre sera théatral: une création originale des
+            "Monologues du vagin" que viendront présenter Karine Isambert et ses comédiennes lors
+            des deux représentations en soirée les 9 et 10 septembre.
+        </p>
+    </section>
 
-            <h2> Organigramme </h2>
-            <h3> Direction Générale </h3>
-            <p>
-                Dominique Nouet, Caroline Deforge,Michel Nemesien
-            </p>
-            <h3> Budget - Comptabilité </h3>
-            <p>
-                Michel Nemesien
-            </p>
-            <h3> Relation presse médias </h3>
-            <p>
-                Dominique Nouet
-            </p>
-            <h3> Relation partenaires </h3>
-            <p>
-                Caroline Deforge
-            </p>
-            <h3> Animation artistique </h3>
-            <p>
-                José Cano Lopez
-            </p>
-            <h3>  Coordination débats et unitées </h3>
-            <p>
-                Aurore Le goff
-            </p>
-            <h3> Organisation logistique et bénévoles</h3>
-            <p>
-                Cédric Ardouin
-            </p>
-        </section>
-        <section class="program">
+    <section class="organigram">
+        <h2> Organigramme </h2>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path("member_new") }}" class="adminElement">Nouvel membre</a>
+        {% endif %}
+        {% for title, members in membersOrdered %}
+        <h3>{{ title }}</h3>
+        <div class="members">
+            {% for member in members %}
+            <div class="member">
+                {% if member.mission != null %}
+                <p class="member-mission">{{ member.mission }}</p>
+                {% endif %}
+                <p class="member-name">{{ member.name }}</p>
+                {% if member.phoneNumber != null %}
+                <p class="member-contact">tel: {{ member.phoneNumber }}</p>
+                {% endif %}
+                {% if member.email != null %}
+                <p class="member-contact">e-mail: {{ member.email }}</p>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('member_edit', {'id': member.id}) }}" class="adminElement">Modifier/Supprimer</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </section>
 
-            <h2> Programme </h2>
-            <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
-            <ul>
-                {% for event in events %}
-                <li>
-                    <h3>{{ event.date|format_datetime('full', 'none', locale='fr') }}</h3>
-                    <p>
-                        {{ event.title }}
-                        {% if event.content != null %}
-                        <pre>{{ event.content }}</pre>
-                        {% endif %}
-                    </p>
-                    <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>
-
-                </li>
-                {% endfor %}
-            </ul>
-            <h2> Monologues du vagin </h2>
-
-            <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero expedita, odit autem laborum voluptas ut,
-                obcaecati harum quae voluptatem non officiis beatae maxime maiores nemo laboriosam quo quod asperiores.
-                Aliquid illo facilis tenetur ullam quaerat delectus consequatur voluptatum esse,
-                ad fugit iusto alias earum nulla repellat labore dolores dignissimos eum?
-            <p>
-        </section>
-        <section class="articles">
-            {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a>
-            {% endif %}
-
-            <ul>
-                {% for article in articles %}
-                <li>
-                    {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+    <section class="program">
+        <h2> Programme </h2>
+        <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
+        <ul>
+            {% for event in events %}
+            <li>
+                <h3>{{ event.date|format_datetime('full', 'none', locale='fr') }}</h3>
+                <p>
+                    {{ event.title }}
+                    {% if event.content != null %}
+                    <pre>{{ event.content }}</pre>
                     {% endif %}
-                    <h2>{{ article.title }}</h2>
-                    <p>Publié le {{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
-                    {% if article.imageFilename != null %}
-                    <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
-                    {% endif %}
-                    {% if article.youTubeLink != null %}
-                    <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    {% endif %}
-                    <p>
-                        <pre>{{ article.content }}</pre>
-                    </p>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
+                </p>
+                <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>
+
+            </li>
+            {% endfor %}
+        </ul>
+        <h2> Monologues du vagin </h2>
+
+        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero expedita, odit autem laborum voluptas ut,
+            obcaecati harum quae voluptatem non officiis beatae maxime maiores nemo laboriosam quo quod asperiores.
+            Aliquid illo facilis tenetur ullam quaerat delectus consequatur voluptatum esse,
+            ad fugit iusto alias earum nulla repellat labore dolores dignissimos eum?
+        <p>
+    </section>
+
+    <section class="articles">
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a>
+        {% endif %}
+
+        <ul>
+            {% for article in articles %}
+            <li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+                {% endif %}
+                <h2>{{ article.title }}</h2>
+                <p>Publié le {{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
+                {% if article.imageFilename != null %}
+                <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+                {% endif %}
+                {% if article.youTubeLink != null %}
+                <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endif %}
+                <p>
+                    <pre>{{ article.content }}</pre>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 
 {% endblock %}

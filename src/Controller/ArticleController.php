@@ -51,6 +51,8 @@ class ArticleController extends AbstractController
             switch ($article->getType()) {
                 case 'festivelles':
                     return $this->redirectToRoute('festivelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
                 case 'citoyelles':
                     return $this->redirectToRoute('actuelles');
                 case 'portrelles':
@@ -95,6 +97,8 @@ class ArticleController extends AbstractController
             switch ($article->getType()) {
                 case 'festivelles':
                     return $this->redirectToRoute('festivelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
                 case 'citoyelles':
                     return $this->redirectToRoute('actuelles');
                 case 'portrelles':
@@ -128,6 +132,8 @@ class ArticleController extends AbstractController
             switch ($articleType) {
                 case 'festivelles':
                     return $this->redirectToRoute('festivelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
                 case 'citoyelles':
                     return $this->redirectToRoute('actuelles');
                 case 'portrelles':
