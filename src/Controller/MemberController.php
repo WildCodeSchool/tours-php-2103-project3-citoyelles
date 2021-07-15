@@ -40,13 +40,16 @@ class MemberController extends AbstractController
     /**
      * @Route("/{id}/edit", name="member_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Member $member): Response
-    {
+    public function edit(
+        Request $request,
+        Member $member,
+        EntityManagerInterface $entityManager
+    ): Response {
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager->flush();
 
             return $this->redirectToRoute('festivelles');
         }
