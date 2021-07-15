@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\EditUserType;
 use App\Service\UserService;
+use Doctrine\ORM\EntityManagerInterface;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,8 +47,11 @@ class SecurityController extends AbstractController
      * @Route("/editUser", name="edit_user")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function editUser(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
-    {
+    public function editUser(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        EntityManagerInterface $entityManager
+    ): Response {
         $user = $this->getUser();
         if (!$user instanceof User) {
             throw $this->createAccessDeniedException('vous devez etre connecté');
@@ -63,7 +67,7 @@ class SecurityController extends AbstractController
             $errors = $userService->findUserErrors($user, $passwordEncoder, $isUsernameValid, $isPasswordValid);
 
             if ($isUsernameValid || $isPasswordValid) {
-                $this->getDoctrine()->getManager()->flush();
+                $entityManager->flush();
                 return $this->redirectToRoute('home');
             } elseif ($errors) {
                 foreach ($errors as $error) {
