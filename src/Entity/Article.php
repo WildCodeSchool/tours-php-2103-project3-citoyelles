@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Article
 {
-    public const TYPES = ["festivelles", "citoyelles", "portrelles"];
+    public const TYPES = ["festivelles", "rencontres", "citoyelles", "portrelles"];
 
     /**
      * @ORM\Id

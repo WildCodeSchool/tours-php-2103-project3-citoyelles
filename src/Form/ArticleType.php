@@ -24,17 +24,19 @@ class ArticleType extends AbstractType
                 'label' => 'Type d\'article :',
                 'choices' => [
                     'Festiv\'Elles' => Article::TYPES[0],
-                    'Citoy\'Elles' => Article::TYPES[1],
-                    'Portr\'Elles' => Article::TYPES[2]
+                    'Rencontres' => Article::TYPES[1],
+                    'Citoy\'Elles' => Article::TYPES[2],
+                    'Portr\'Elles' => Article::TYPES[3]
                 ],
                 'expanded' => true,
                 'multiple' => false
             ])
             ->add('title', TextType::class, [
-                'label' => 'Titre : '
+                'label' => 'Titre : ',
+                'attr' => ['placeholder' => 'Veuillez saisir un titre.']
             ])
             ->add('image', FileType::class, [
-                'label' => 'Image (GIF, JPG, JPEG, PNG) : ',
+                'label' => 'Image (GIF, JPG, JPEG, PNG), max. 1Mo : ',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -46,9 +48,15 @@ class ArticleType extends AbstractType
             ->add('youTubeLink', TextType::class, [
                 'required' => false,
                 'label' => 'Lien vidéo YouTube : ',
+                'attr' => ['placeholder' => 'https://www.youtube.com/watch?v=exemple']
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Texte : '
+                'label' => 'Texte : ',
+                'attr' => [
+                    'rows' => 15,
+                    'cols' => 28,
+                    'placeholder' => "Le texte est obligatoire."
+                    ]
             ])
         ;
     }
