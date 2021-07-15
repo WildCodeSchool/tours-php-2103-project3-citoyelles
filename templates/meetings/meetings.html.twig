@@ -24,7 +24,7 @@
                     <p>
                         {{ event.title }}
                         {% if event.content != null %}
-                        <pre>{{ event.content }}</pre>
+                        <pre>{{ event.content|raw }}</pre>
                         {% endif %}
                     </p>
                     {% if is_granted('ROLE_ADMIN') %}

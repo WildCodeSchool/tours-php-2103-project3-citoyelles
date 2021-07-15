@@ -74,7 +74,7 @@
                 <p>
                     {{ event.title }}
                     {% if event.content != null %}
-                    <pre>{{ event.content }}</pre>
+                    <pre>{{ event.content|raw }}</pre>
                     {% endif %}
                 </p>
                 <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>

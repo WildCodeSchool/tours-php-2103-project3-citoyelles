@@ -84,7 +84,9 @@ class Article
 
     public function getContent(): ?string
     {
-        return $this->content;
+        $text = htmlentities($this->content);
+        return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $text);
+        //return $this->content;
     }
 
     public function setContent(string $content): self

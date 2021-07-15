@@ -26,7 +26,7 @@
                 <h2>{{ article.title }}</h2>
                 <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
                 <p>
-                    <pre>{{ article.content }}</pre>
+                    <pre>{{ article.content|raw }}</pre>
                 </p>
             </li>
             {% endfor %}
@@ -75,7 +75,7 @@
     {% endif %}
     <p>
     </ul>
-        <pre>{{ portrait.content }}</pre>
+        <pre>{{ portrait.content|raw }}</pre>
     </p>
     {% endfor %}
 </ul>
