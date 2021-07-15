@@ -68,18 +68,19 @@ h1 {
 
 h2 {
     text-align: center;
-    font-size: min(calc(12px + 1vw), 22px);
+    font-size: min(calc(14px + 1vw), 24px);
 }
 
 #infoAndFollowTitle {
-    font-size: min(calc(10px + 1.2vw), 22px);
+    font-size: min(calc(12px + 1.2vw), 24px);
 }
 
 h3,
 p {
     text-align: justify;
-    font-size: min(calc(8px + 1vw), 18px);
+    font-size: min(calc(12px + 1vw), 22px);
 }
+
 
 /* flash message */
 
@@ -97,6 +98,7 @@ p {
     border: 3px solid var(--police-color);
     border-radius: 4px;
 }
+
 
 /* top button */
 
@@ -265,6 +267,38 @@ footer img {
 }
 
 
+/* Festiv'Elles-------------------------------------------------*/
+
+.members {
+    display: grid;
+}
+
+.member {
+    margin-bottom: 15px;
+}
+
+.member * {
+    margin: 0;
+}
+
+.member-mission {
+    font-size: min(calc(10px + 1vw), 20px);
+    font-weight: 700;
+}
+
+.member-name {
+    font-size: min(calc(12px + 1vw), 22px);
+}
+
+.member-contact {
+    font-size: min(calc(10px + 1vw), 20px);
+}
+
+.member-form * {
+    margin: auto;
+}
+
+
 /* Meetings-----------------------------------------------------*/
 
 .article {
@@ -294,7 +328,6 @@ img.logo_citoyelles {
 
 .citoyellesFlex {
     display: flex;
-
 }
 
 .citoyellesFlex ul {
@@ -304,8 +337,6 @@ img.logo_citoyelles {
 .citoyellesArticle {
     margin-right: 50px;
 }
-
-
 
 
 /* Media Queries--------------------------------------------------*/
@@ -363,6 +394,10 @@ img.logo_citoyelles {
         font-size: 36px;
         margin-left: 50px;
     }
+    /* Festiv'Elles-------------------------------------------------*/
+    .members {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (min-width: 901px) {
@@ -410,12 +445,20 @@ img.logo_citoyelles {
         display: block;
         text-decoration: none;
         color: var(--title-color);
-        font-size: 20px;
     }
     .sidenav a:hover {
         font-weight: 600;
     }
-    @media (max-width: 1200px) {
+    /* Festiv'Elles-------------------------------------------------*/
+    .members {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1301px) {
+        .nav-link {
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 1300px) {
         .sidenav {
             width: 260px;
             min-width: 260px;
@@ -423,8 +466,13 @@ img.logo_citoyelles {
         .sidenav li {
             padding-left: 10px;
         }
+        .nav-link,
         .sidenav a {
             font-size: 16px;
+        }
+        /* Festiv'Elles-------------------------------------------------*/
+        .members {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }
