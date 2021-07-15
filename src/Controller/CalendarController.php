@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Calendar;
 use App\Form\CalendarType;
 use App\Repository\CalendarRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,14 +29,16 @@ class CalendarController extends AbstractController
     /**
      * @Route("/new", name="new_calendar", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response
     {
         $calendar = new Calendar();
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($calendar);
             $entityManager->flush();
 
@@ -70,13 +73,16 @@ class CalendarController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit_calendar", requirements={"id"="\d+"}, methods={"GET","POST"})
      */
-    public function edit(Request $request, Calendar $calendar): Response
-    {
+    public function edit(
+        Request $request,
+        Calendar $calendar,
+        EntityManagerInterface $entityManager
+    ): Response {
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager->flush();
 
             $this->addFlash('success', "L'évènement a bien été modifié.");
 
