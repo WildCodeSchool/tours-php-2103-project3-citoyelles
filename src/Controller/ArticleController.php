@@ -12,9 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/article")
+ * @IsGranted("ROLE_ADMIN")
  */
 class ArticleController extends AbstractController
 {
@@ -49,6 +51,8 @@ class ArticleController extends AbstractController
             switch ($article->getType()) {
                 case 'festivelles':
                     return $this->redirectToRoute('festivelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
                 case 'citoyelles':
                     return $this->redirectToRoute('actuelles');
                 case 'portrelles':
@@ -93,6 +97,8 @@ class ArticleController extends AbstractController
             switch ($article->getType()) {
                 case 'festivelles':
                     return $this->redirectToRoute('festivelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
                 case 'citoyelles':
                     return $this->redirectToRoute('actuelles');
                 case 'portrelles':
@@ -112,12 +118,12 @@ class ArticleController extends AbstractController
     public function delete(
         Request $request,
         Article $article,
-        FileUploader $fileUploader
+        FileUploader $fileUploader,
+        EntityManagerInterface $entityManager
     ): Response {
         $articleType = $article->getType();
         if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
             $fileUploader->delete($article->getImageFilename());
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();
 
@@ -126,6 +132,8 @@ class ArticleController extends AbstractController
             switch ($articleType) {
                 case 'festivelles':
                     return $this->redirectToRoute('festivelles');
+                case 'rencontres':
+                    return $this->redirectToRoute('meetings');
                 case 'citoyelles':
                     return $this->redirectToRoute('actuelles');
                 case 'portrelles':

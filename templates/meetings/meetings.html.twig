@@ -14,11 +14,52 @@
 
 <div class="article">
     <h3 class="article-title">Le temps des rencontres</h3>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ipsam ea aperiam est tenetur quidem repudiandae beatae possimus quibusdam, natus magnam? Adipisci non fugiat blanditiis consectetur sunt. Odit, veritatis aliquam?
-    </p>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
+    {% endif %}
+            <ul>
+                {% for event in events %}
+                <li>
+                    <h3>{{ event.date|format_datetime('full', 'short', locale='fr') }}</h3>
+                    <p>
+                        {{ event.title }}
+                        {% if event.content != null %}
+                        <pre>{{ event.content }}</pre>
+                        {% endif %}
+                    </p>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
 </div>
 
-<h2 id="infoAndFollowTitle">Information et suivie des rencontres</h2>
-{{ include("meetings/article.html.twig") }}
+
+<section class="articles">
+    <h2 id="infoAndFollowTitle">Information et suivie des rencontres</h2>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a>
+    {% endif %}
+    <ul>
+        {% for article in articles %}
+        <li class="article">
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+            {% endif %}
+            <h2 class="article-title">{{ article.title }}</h2>
+            <p>Publié le {{ article.date|format_datetime('full', 'short', locale='fr') }}</p>
+            {% if article.imageFilename != null %}
+            <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+            {% endif %}
+            {% if article.youTubeLink != null %}
+            <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endif %}
+            <p>
+                <pre>{{ article.content }}</pre>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
 {% endblock %}
