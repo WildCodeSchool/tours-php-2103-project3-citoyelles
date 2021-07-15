@@ -56,7 +56,7 @@
                 <p class="member-contact">e-mail: {{ member.email }}</p>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('member_edit', {'id': member.id}) }}" class="adminElement">Modifier/Supprimer « {{ member.name }} »</a>
+                <a href="{{ path('member_edit', {'id': member.id}) }}" class="adminElement">Modifier/Supprimer</a>
                 {% endif %}
             </div>
             {% endfor %}
