@@ -57,6 +57,7 @@ class SecurityController extends AbstractController
             throw $this->createAccessDeniedException('vous devez etre connecté');
         }
         $userService = new UserService();
+        $userService->setNewUsername($user->getUsername());
         $form = $this->createForm(EditUserType::class, $userService);
         $form->handleRequest($request);
 
@@ -64,9 +65,9 @@ class SecurityController extends AbstractController
             $isUsernameValid = $userService->validateNewUsername($user);
             $isPasswordValid = $userService->validateNewPassword($user, $passwordEncoder);
 
-            $errors = $userService->findUserErrors($user, $passwordEncoder, $isUsernameValid, $isPasswordValid);
+            $errors = $userService->findUserErrors($user, $passwordEncoder, $isPasswordValid);
 
-            if ($isUsernameValid || $isPasswordValid) {
+            if (($isUsernameValid || $isPasswordValid) && !$errors) {
                 $entityManager->flush();
                 return $this->redirectToRoute('home');
             } elseif ($errors) {
