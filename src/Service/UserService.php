@@ -7,17 +7,11 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserService
 {
-    private ?string $oldUsername = null;
     private ?string $newUsername = null;
     private ?string $oldPassword = null;
     private ?string $newPassword = null;
 
     /** getters **/
-    public function getOldUsername(): ?string
-    {
-        return $this->oldUsername;
-    }
-
     public function getNewUsername(): ?string
     {
         return $this->newUsername;
@@ -35,12 +29,6 @@ class UserService
 
 
     /** Setters **/
-    public function setOldUsername(?string $oldUsername): self
-    {
-        $this->oldUsername = $oldUsername;
-        return $this;
-    }
-
     public function setNewUsername(?string $newUsername): self
     {
         $this->newUsername = $newUsername;
@@ -66,11 +54,7 @@ class UserService
      */
     public function validateNewUsername(User $user): bool
     {
-        if (
-            $this->getOldUsername()
-            && $this->getOldUsername() === $user->getUsername()
-            && is_string($this->getNewUsername())
-        ) {
+        if ($this->getNewUsername() !== $user->getUsername() && is_string($this->getNewUsername())) {
             $user->setUsername($this->getNewUsername());
             return true;
         }
@@ -101,16 +85,11 @@ class UserService
     public function findUserErrors(
         User $user,
         UserPasswordEncoderInterface $passwordEncoder,
-        bool $isUsernameValid,
         bool $isPasswordValid
     ): array {
         $errors = [];
-        if (!$isUsernameValid && $this->getOldUsername()) {
-            if ($this->getOldUsername() != $user->getUsername()) {
-                $errors[] = "Votre nom d'utilisateur est invalide";
-            } elseif (!$this->getNewUsername()) {
-                $errors[] = "Veuillez entré un nouveau nom d'utilisateur";
-            }
+        if (!$this->getNewUsername()) {
+            $errors[] = "Veuillez entré un nouveau nom d'utilisateur";
         }
 
         if (!$isPasswordValid && is_string($this->getOldPassword())) {
