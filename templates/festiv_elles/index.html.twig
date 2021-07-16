@@ -30,9 +30,11 @@
             De même au travers des rencontres et des thèmes abordés il ne s'agira pas de refermer le livre en attendant l'édition suivante mais de poser le cadre d'actions durables dans celui de nos activités.
             Dans nos communications et engagements, "Les Rencontres Citoy'Elles", "Portr'Elles" "L'édit'Elles du lundi" nous relayerons régulièrement nos travaux.
             La place des femmes dans la vie de la cité sera donc le fil conducteur du "Festiv'Elles du Livre" et celui-ci sera le moteur et le prolongement de nos travaux.
+
         </p>
 
         <p>
+
 
             Dans "EnsembleS" il y a aussi la présence des hommes, ceux-ci seront des observateurs privilégiés durant ces deux jours, pouvant entendre ainsi sans tabous et sans rejet ce que des femmes leur diront des inégalités qu'elles endurent au quotidien.
 
@@ -77,83 +79,87 @@
 
             </p>
 
+    </section>
+
+    <section class="organigram">
+        <h2> Organigramme </h2>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path("member_new") }}" class="adminElement">Nouveau membre</a>
+        {% endif %}
+        {% for title, members in membersOrdered %}
+        <h3>{{ title }}</h3>
+        <div class="members">
+            {% for member in members %}
+            <div class="member">
+                {% if member.mission != null %}
+                <p class="member-mission">{{ member.mission }}</p>
+                {% endif %}
+                <p class="member-name">{{ member.name }}</p>
+                {% if member.phoneNumber != null %}
+                <p class="member-contact">tel: {{ member.phoneNumber }}</p>
+                {% endif %}
+                {% if member.email != null %}
+                <p class="member-contact">e-mail: {{ member.email }}</p>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('member_edit', {'id': member.id}) }}" class="adminElement">Modifier/Supprimer</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </section>
 
 
-            <h2> Organigramme </h2>
-            <h3> Direction Générale </h3>
-            <p>
-                Dominique Nouet, Caroline Deforge,Michel Nemesien
-            </p>
-            <h3> Budget - Comptabilité </h3>
-            <p>
-                Michel Nemesien
-            </p>
-            <h3> Relation presse médias </h3>
-            <p>
-                Dominique Nouet
-            </p>
-            <h3> Relation partenaires </h3>
-            <p>
-                Caroline Deforge
-            </p>
-            <h3> Animation artistique </h3>
-            <p>
-                José Cano Lopez
-            </p>
-            <h3>  Coordination débats et unitées </h3>
-            <p>
-                Aurore Le goff
-            </p>
-            <h3> Organisation logistique et bénévoles</h3>
-            <p>
-                Cédric Ardouin
-            </p>
-        </section>
-        <section class="program">
-
-            <h2> Programme </h2>
-            <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
-            <ul>
-                {% for event in events %}
-                <li>
-                    <h3>{{ event.date|format_datetime('full', 'none', locale='fr') }}</h3>
-                    <p>
-                        {{ event.title }}
-                        {% if event.content != null %}
-                        <pre>{{ event.content }}</pre>
-                        {% endif %}
-                    </p>
-                    <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>
-
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
-        <section class="articles">
-            {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a>
-            {% endif %}
-
-            <ul>
-                {% for article in articles %}
-                <li>
-                    {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+    <section class="program">
+        <h2>Agenda à venir</h2>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path("new_calendar") }}" class="adminElement">Nouvel évènement</a>
+        {% endif %}
+        <ul>
+            {% for event in events %}
+            <li>
+                <h3>{{ event.date|format_datetime('full', 'none', locale='fr') }}</h3>
+                <p>
+                    {{ event.title }}
+                    {% if event.content != null %}
+                    <pre>{{ event.content }}</pre>
                     {% endif %}
-                    <h2>{{ article.title }}</h2>
-                    <p>Publié le {{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
-                    {% if article.imageFilename != null %}
-                    <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
-                    {% endif %}
-                    {% if article.youTubeLink != null %}
-                    <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    {% endif %}
-                    <p>
-                        <pre>{{ article.content }}</pre>
-                    </p>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
+                </p>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('edit_calendar', {'id': event.id}) }}" class="adminElement">Modifier/Supprimer « {{ event.title }} »</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="articles">
+        <h2>Articles</h2>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path("new_article") }}" class="adminElement">Nouvel article</a>
+        {% endif %}
+
+        <ul>
+            {% for article in articles %}
+            <li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
+                {% endif %}
+                <h2>{{ article.title }}</h2>
+                <p>Publié le {{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
+                {% if article.imageFilename != null %}
+                <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+                {% endif %}
+                {% if article.youTubeLink != null %}
+                <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endif %}
+                <p>
+                    <pre>{{ article.content }}</pre>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 
 {% endblock %}
