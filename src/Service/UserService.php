@@ -89,14 +89,14 @@ class UserService
     ): array {
         $errors = [];
         if (!$this->getNewUsername()) {
-            $errors[] = "Veuillez entré un nouveau nom d'utilisateur";
+            $errors[] = "Veuillez entrer un nouveau nom d'utilisateur";
         }
 
         if (!$isPasswordValid && is_string($this->getOldPassword())) {
             if (!$passwordEncoder->isPasswordValid($user, $this->getOldPassword())) {
                 $errors[] = "Votre mot de passe est invalide";
             } elseif (!$this->getNewPassword()) {
-                $errors[] = "Veuillez entré un nouveau mot de passe";
+                $errors[] = "Veuillez entrer un nouveau mot de passe";
             }
         }
         return $errors;
