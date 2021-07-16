@@ -89,7 +89,7 @@ class UserService
     ): array {
         $errors = [];
         if (!$this->getNewUsername()) {
-            $errors[] = "Veuillez entré un nouveau nom d'utilisateur";
+            $errors[] = "Veuillez entrer un nouveau nom d'utilisateur";
         }
 
         if (!$isPasswordValid && is_string($this->getOldPassword())) {
