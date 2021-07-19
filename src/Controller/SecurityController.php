@@ -54,7 +54,7 @@ class SecurityController extends AbstractController
     ): Response {
         $user = $this->getUser();
         if (!$user instanceof User) {
-            throw $this->createAccessDeniedException('vous devez etre connecté');
+            throw $this->createAccessDeniedException('vous devez être connecté');
         }
 
         $oldUserName = $user->getUsername();
@@ -88,7 +88,7 @@ class SecurityController extends AbstractController
                 $this->addFlash('notice', 'Votre nom de compte à bien été changé !');
                 return $this->redirectToRoute('home');
             } else {
-                $this->addFlash('notice', 'Aucune modification détecter, veuillez remplir les champs correctement !');
+                $this->addFlash('notice', 'Aucune modification détectée, veuillez remplir les champs correctement !');
             }
         }
         return $this->render('security/editUser.html.twig', [
