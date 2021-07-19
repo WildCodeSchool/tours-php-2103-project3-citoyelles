@@ -4,13 +4,26 @@
 
 {% block body %}
     <h1>Créer un nouvel évènement</h1>
-    <p>
-       <u>Remarque pour le programme de Festiv'Elles</u>: <br>
-        Les heures de début et de fin de chaque évènement sont à saisir dans le champ <i>Texte (optionnel)</i>. <br>
-        Laisser l'heure du champ <i>Date</i> à <i>00:00</i>.
-    </p>
-
-    {{ include('calendar/_form.html.twig') }}
-
     <a href="{{ path('index_calendar') }}">Liste de tous les évènements</a>
+    {{ include('calendar/_form.html.twig') }}
+    <h2>Cas particulier pour le programme de Festiv'Elles</h2>
+    <p>
+        Les heures de début et de fin de chaque évènement sont à saisir dans le champ <i>Texte</i>. <br>
+        Laisser l'heure du champ <i>Date</i> à <i>00:00</i>. <br>
+        => pour le cas où on voudrait préciser des horaires. <br>
+        <pre>
+            Exemple :
+
+                  |
+                  |
+            Texte:| 10h - 11h30 : Moment d'échange.
+                  |
+                  |
+        </pre>
+    </p>
+    <h2>Cas général</h2>
+    <p>
+        Le type, le titre et la date des évènements sont requis. <br>
+        Un contenu 'Texte' peut être ajouté en option.
+    </p>
 {% endblock %}
