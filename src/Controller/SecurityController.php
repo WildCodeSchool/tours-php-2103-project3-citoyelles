@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\EditUserType;
-use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
@@ -56,26 +56,38 @@ class SecurityController extends AbstractController
         if (!$user instanceof User) {
             throw $this->createAccessDeniedException('vous devez etre connecté');
         }
-        $userService = new UserService();
-        $userService->setNewUsername($user->getUsername());
-        $form = $this->createForm(EditUserType::class, $userService);
+
+        $oldUserName = $user->getUsername();
+        $form = $this->createForm(EditUserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $isUsernameValid = $userService->validateNewUsername($user);
-            $isPasswordValid = $userService->validateNewPassword($user, $passwordEncoder);
+            $oldPassword = $form->get('oldPassword')->getData();
+            if ($oldPassword) {
+                if ($user->getPlainPassword()) {
+                    if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
+                        $newEncodedPassword = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                        $user->setPassword($newEncodedPassword);
 
-            $errors = $userService->findUserErrors($user, $passwordEncoder, $isPasswordValid);
+                        $entityManager->persist($user);
+                        $entityManager->flush();
 
-            if (($isUsernameValid || $isPasswordValid) && !$errors) {
-                $entityManager->flush();
-                return $this->redirectToRoute('home');
-            } elseif ($errors) {
-                foreach ($errors as $error) {
-                    $this->addFlash('error', $error);
+                        $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
+                        return $this->redirectToRoute('home');
+                    } else {
+                        $form->addError(new FormError('Ancien mot de passe incorrect'));
+                    }
+                } else {
+                    $form->addError(new FormError('Nouveau mot de passe non rempli'));
                 }
+            } elseif ($oldUserName != $user->getUsername()) {
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                $this->addFlash('notice', 'Votre nom de compte à bien été changé !');
+                return $this->redirectToRoute('home');
             } else {
-                $this->addFlash('warning', 'Champs manquant, rien n\'a été modifié');
+                $this->addFlash('notice', 'Aucune modification détecter, veuillez remplir les champs correctement !');
             }
         }
         return $this->render('security/editUser.html.twig', [
