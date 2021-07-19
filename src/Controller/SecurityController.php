@@ -64,9 +64,10 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $oldPassword = $form->get('oldPassword')->getData();
             if ($oldPassword) {
-                if ($user->getPlainPassword()) {
+                $plainPassword = $user->getPlainPassword();
+                if ($plainPassword) {
                     if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
-                        $newEncodedPassword = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                        $newEncodedPassword = $passwordEncoder->encodePassword($user, $plainPassword);
                         $user->setPassword($newEncodedPassword);
 
                         $entityManager->persist($user);
