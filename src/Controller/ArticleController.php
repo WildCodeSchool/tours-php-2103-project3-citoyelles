@@ -118,12 +118,12 @@ class ArticleController extends AbstractController
     public function delete(
         Request $request,
         Article $article,
-        FileUploader $fileUploader
+        FileUploader $fileUploader,
+        EntityManagerInterface $entityManager
     ): Response {
         $articleType = $article->getType();
         if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
             $fileUploader->delete($article->getImageFilename());
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();
 
