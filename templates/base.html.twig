@@ -16,7 +16,7 @@
 	<body>
 		<header>
 			<div class="banner">
-				{% block banner %}<img src="/images/banner.png" alt="bandeau">{% endblock %}
+				<a href="{{ path("home") }}">{% block banner %}<img src="/images/banner.png" alt="bandeau">{% endblock %}</a>
 			</div>
 			<span id="burger" style="font-size:30px;cursor:pointer">&#9776;</span>
 		</header>
@@ -69,6 +69,7 @@
 					<ul>
 						<li>tél: 06 10 99 44 48</li>
 						<li>mail: <a href="mailto:citoyelles@hotmail.com">citoyelles@hotmail.com</a></li>
+						<li><a href="{{ path("legal_notice") }}">Mentions Légales</a></li>
 					</ul>
 				</section>
 				<div class="socialAndMember">
