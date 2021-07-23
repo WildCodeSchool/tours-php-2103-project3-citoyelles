@@ -56,6 +56,9 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *    message = "Le lien '{{ value }}' est invalide.",
+     * )
      */
     private ?string $youTubeLink;
 
