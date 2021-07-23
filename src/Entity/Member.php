@@ -36,6 +36,12 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=15, nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 13,
+     *      minMessage = "Votre numéro de téléphone {{ value }} est trop court, minimum {{ limit }} chiffres.",
+     *      maxMessage = "Votre numéro de téléphone {{ value }} est trop long, maximum {{ limit }} chiffres."
+     * )
      */
     private ?string $phoneNumber;
 
