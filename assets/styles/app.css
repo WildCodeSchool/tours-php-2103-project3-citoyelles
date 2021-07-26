@@ -81,6 +81,11 @@ p {
     font-size: min(calc(12px + 1vw), 22px);
 }
 
+.articleImage {
+    width: min(50vw, 300px);
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* flash message */
 
@@ -301,20 +306,22 @@ footer img {
 
 /* Meetings-----------------------------------------------------*/
 
+.articles * {
+    padding: 0;
+    list-style-type: none;
+}
+
 .article {
     background-color: var(--article-color);
-    border: darkgrey 1px;
     border-radius: 5px;
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-bottom: 10px;
+    list-style-type: none;
 }
 
-.article * {
-    margin-top: 0;
-}
 
 
 /* Actu'Elles-----------------------------------------------------*/
@@ -328,6 +335,7 @@ img.logo_citoyelles {
 
 .citoyellesFlex {
     display: flex;
+    flex-direction: column-reverse;
 }
 
 .citoyellesFlex ul {
@@ -453,6 +461,24 @@ img.logo_citoyelles {
     .members {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    /* Actu'Elles ----------------------------------------------------*/
+    .citoyellesFlex {
+        flex-direction: initial;
+        justify-content: center;
+    }
+
+    .citoyellesArticle {
+        flex-basis: 60%;
+        /* margin-right: 0; */
+    }
+
+    .citoyellesCalendar {
+        flex-basis: 40%;
+    }
+
+    /*----------------------------------------------------------------*/
+
     @media (min-width: 1301px) {
         .nav-link {
             font-size: 20px;
