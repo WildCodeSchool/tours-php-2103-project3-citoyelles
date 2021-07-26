@@ -42,6 +42,8 @@ Please read [Twig > Docs > Filters > format_datetime](https://twig.symfony.com/d
 
 1. Run `symfony server:start` to launch your local php web server
 2. Run `yarn run dev --watch` to launch your local server for assets
+3. You can log as admin with the username "admin" and the password "adminpassword".
+Make sure you change your username and password at the first connection.
 
 ### Testing
 
