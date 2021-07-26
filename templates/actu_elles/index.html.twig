@@ -21,7 +21,7 @@
                 <a href="{{ path('edit_article', {'id': article.id}) }}" class="adminElement">Modifier/Supprimer « {{ article.title }} »</a>
                 {% endif %}
                 {% if article.imageFilename != null %}
-                <imgclass="articleImage" src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+                <img class="articleImage" src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
                 {% endif %}
                 <h2>{{ article.title }}</h2>
                 <p>{{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
