@@ -33,7 +33,11 @@ Read more [Twig > Docs > Filters > format_datetime](https://twig.symfony.com/doc
 1. Clone this project
 2. Run `composer install`
 3. Run `yarn install`
-4. Run `yarn encore dev` to build assets  
+4. Run `yarn encore dev` to build assets
+5. Configure your database :
+- First, copy .env file as .env.local and set you db_user, db_password and db_name
+- Second, run symfony console doctrine:database:create and symfony console doctrine:migration:migrate
+
 
 ### Working
 
@@ -47,8 +51,8 @@ Make sure you change your username and password at the first connection.
 1. Run `.vendor/bin/phpcs` to launch PHP code sniffer
 2. Run `.vendor/bin/phpstan analyse src --level max` to launch PHPStan
 3. Run `.vendor/bin/phpmd src text phpmd.xml` to launch PHP Mess Detector
-3. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
-3. Run `../node_modules/.bin/sass-lint -c sass-linter.yml -v` to launch Sass-lint SASS/CSS linter
+4. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
+5. Run `../node_modules/.bin/sass-lint -c sass-linter.yml -v` to launch Sass-lint SASS/CSS linter
 
 ### Windows Users
 
