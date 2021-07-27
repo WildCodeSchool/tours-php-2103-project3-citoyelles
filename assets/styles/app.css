@@ -87,9 +87,24 @@ p {
     margin-right: auto;
 }
 
-/* flash message */
+/* flash messages */
 
-#flashMessage {
+/* #flashMessage {
+    margin: auto;
+    z-index: 100;
+    width: 50%;
+    height: 100px;
+    background-color: yellowgreen;
+    color: white;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    border: 3px solid var(--police-color);
+    border-radius: 4px;
+} */
+
+.alert-success {
     margin: auto;
     z-index: 100;
     width: 50%;
@@ -104,6 +119,35 @@ p {
     border-radius: 4px;
 }
 
+.alert-error {
+    margin: auto;
+    z-index: 100;
+    width: 50%;
+    height: 100px;
+    background-color: red;
+    color: white;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    border: 3px solid var(--police-color);
+    border-radius: 4px;
+}
+
+.alert-warning {
+    margin: auto;
+    z-index: 100;
+    width: 50%;
+    height: 100px;
+    background-color: orange;
+    color: white;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    border: 3px solid var(--police-color);
+    border-radius: 4px;
+}
 
 /* top button */
 
