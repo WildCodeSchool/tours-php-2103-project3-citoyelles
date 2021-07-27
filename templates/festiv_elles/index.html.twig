@@ -149,7 +149,7 @@
                 <h2>{{ article.title }}</h2>
                 <p>Publié le {{ article.date|format_datetime('full', 'none', locale='fr') }}</p>
                 {% if article.imageFilename != null %}
-                <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+                <img class="articleImage" src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
                 {% endif %}
                 {% if article.youTubeLink != null %}
                 <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
