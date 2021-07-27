@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class DataMembershipController extends AbstractController
 {
@@ -62,5 +63,18 @@ class DataMembershipController extends AbstractController
             'form' => $form->createView(),
             "error" => ""
         ]);
+    }
+
+    /**
+     * @Route("/membership/", name="membership")
+     */
+    public function membership(): Response
+    {
+        if (file_exists(__DIR__ . "/../../public/uploads/pdf/membership.pdf")) {
+            return new BinaryFileResponse(__DIR__ . "/../../public/uploads/pdf/membership.pdf");
+        } else {
+            $this->addFlash("error", "Le formulaire d'adhésion n'existe pas");
+        }
+        return $this->redirectToRoute("home");
     }
 }
