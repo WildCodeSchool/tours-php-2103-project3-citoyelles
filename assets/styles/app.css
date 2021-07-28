@@ -258,14 +258,16 @@ footer img {
     padding: 0;
 }
 
+
 .insidenav li:nth-child(1) {
     grid-area: about;
-    transform: rotate(5deg);
+    transform: rotate(5deg) scale(1.3, 1.3);
 }
 
 .insidenav li:nth-child(2) {
     grid-area: festivelles;
     transform: rotate(-10deg);
+
 }
 
 .insidenav li:nth-child(3) {
@@ -437,6 +439,10 @@ img.logo_citoyelles {
         right: 25px;
         font-size: 36px;
         margin-left: 50px;
+    }
+    /* home------------------------------------------------------ */
+    .insidenav img {
+        width: 80%;
     }
     /* Festiv'Elles-------------------------------------------------*/
     .members {
