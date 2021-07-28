@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MemberRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MemberRepository::class)
@@ -35,11 +36,20 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=15, nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 13,
+     *      minMessage = "Votre numéro de téléphone {{ value }} est trop court, minimum {{ limit }} chiffres.",
+     *      maxMessage = "Votre numéro de téléphone {{ value }} est trop long, maximum {{ limit }} chiffres."
+     * )
      */
     private ?string $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email(
+     *     message = "Le mail '{{ value }}' est invalide."
+     * )
      */
     private ?string $email;
 
