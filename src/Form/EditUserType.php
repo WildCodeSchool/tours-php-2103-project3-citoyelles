@@ -20,6 +20,7 @@ class EditUserType extends AbstractType
                 'label' => 'Nom d\'utilisateur'
             ])
             ->add('oldPassword', PasswordType::class, [
+                'label' => 'Ancien mot de passe',
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
                 'mapped' => false

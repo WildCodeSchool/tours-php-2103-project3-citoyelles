@@ -38,7 +38,7 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="member_edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="member_edit", methods={"GET","POST"})
      */
     public function edit(
         Request $request,
@@ -61,7 +61,7 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="member_delete", methods={"POST"})
+     * @Route("/delete/{id}", name="member_delete", methods={"POST"})
      */
     public function delete(Request $request, Member $member, EntityManagerInterface $entityManager): Response
     {

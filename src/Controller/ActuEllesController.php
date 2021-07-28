@@ -21,7 +21,8 @@ class ActuEllesController extends AbstractController
         );
 
         $calendars = $calendarRepository->findBy(
-            ['type' => 'citoyelles']
+            ['type' => 'citoyelles'],
+            ['date' => 'ASC']
         );
 
         $portraits = $articleRepository->findBy(
