@@ -25,31 +25,34 @@ It's symfony website-skeleton project with some additional tools to validate cod
 
 1. Check composer is installed
 2. Check yarn & node are installed
+3. check intl is installed, if not run sudo apt install php7.4-intl
+Read more [Twig > Docs > Filters > format_datetime](https://twig.symfony.com/doc/3.x/filters/format_datetime.html)
 
 ### Install
 
 1. Clone this project
 2. Run `composer install`
 3. Run `yarn install`
-4. Run `yarn encore dev` to build assets  
-*Option :*
-5. If you encounter this error message : <u>"Only the ‘en’ locale is supported. Please install the ‘intl’ extension for full localization capabilities.</u>"  
-Please read [Twig > Docs > Filters > format_datetime](https://twig.symfony.com/doc/3.x/filters/format_datetime.html)  
-5.1. Install php7.4-intl module : `sudo apt install php7.4-intl` (If you run php7.4...)  
-5.2 Restart server if necessary : `symfony server:start`
+4. Run `yarn encore dev` to build assets
+5. Configure your database :
+- First, copy .env file as .env.local and set you db_user, db_password and db_name
+- Second, run symfony console doctrine:database:create and symfony console doctrine:migration:migrate
+
 
 ### Working
 
 1. Run `symfony server:start` to launch your local php web server
 2. Run `yarn run dev --watch` to launch your local server for assets
+3. You can log as admin with the username "admin" and the password "adminpassword".
+Make sure you change your username and password at the first connection.
 
 ### Testing
 
 1. Run `.vendor/bin/phpcs` to launch PHP code sniffer
 2. Run `.vendor/bin/phpstan analyse src --level max` to launch PHPStan
 3. Run `.vendor/bin/phpmd src text phpmd.xml` to launch PHP Mess Detector
-3. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
-3. Run `../node_modules/.bin/sass-lint -c sass-linter.yml -v` to launch Sass-lint SASS/CSS linter
+4. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
+5. Run `../node_modules/.bin/sass-lint -c sass-linter.yml -v` to launch Sass-lint SASS/CSS linter
 
 ### Windows Users
 

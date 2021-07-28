@@ -111,7 +111,7 @@ class CalendarController extends AbstractController
             $entityManager->remove($calendar);
             $entityManager->flush();
 
-            $this->addFlash('success', "L'évènement a bien été créé.");
+            $this->addFlash('success', "L'évènement a bien été supprimé.");
 
             switch ($calendar->getType()) {
                 case 'festivelles':
