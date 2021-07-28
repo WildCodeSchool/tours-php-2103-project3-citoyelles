@@ -59,6 +59,7 @@ main {
 h1,
 h2 {
     color: var(--title-color);
+    font-weight: 100;
 }
 
 h1 {
@@ -87,22 +88,13 @@ p {
     margin-right: auto;
 }
 
+.citoyellesPolice {
+    font-family: 'Virtual Regular';
+    font-size: 60px;
+}
+
 /* flash messages */
 
-/* #flashMessage {
-    margin: auto;
-    z-index: 100;
-    width: 50%;
-    height: 100px;
-    background-color: yellowgreen;
-    color: white;
-    font-style: italic;
-    font-weight: 700;
-    text-align: center;
-    padding: 20px;
-    border: 3px solid var(--police-color);
-    border-radius: 4px;
-} */
 
 .alert-success {
     margin: auto;
