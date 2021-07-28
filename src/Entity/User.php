@@ -140,6 +140,7 @@ class User implements UserInterface
         ));
         //-------------------------------
         $admin->eraseCredentials();
+
         //--------------------------------
         $manager->persist($admin);
 
