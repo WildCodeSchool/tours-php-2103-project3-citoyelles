@@ -36,6 +36,8 @@ class User implements UserInterface
      */
     private $password;
 
+    private ?string $plainPassword = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,12 +106,27 @@ class User implements UserInterface
     }
 
     /**
+     *
+     */
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    /**
      * @see UserInterface
      */
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     public static function createFirstUser(UserPasswordEncoderInterface $passwordEncoder, ObjectManager $manager): void
@@ -121,7 +138,10 @@ class User implements UserInterface
             $admin,
             'adminpassword'
         ));
+        //-------------------------------
+        $admin->eraseCredentials();
 
+        //--------------------------------
         $manager->persist($admin);
 
         // Sauvegarde du nouvelle utilisateur :
