@@ -81,8 +81,8 @@
 
             <div class="socialNetworksEditelles">
                 <ul>
-                    <li><a href="https://www.instagram.com/festiv_elles_du_livre/"><img src="images/instagram96.jpg" alt="logo instagram"></a></li>
-                    <li><a href="https://www.facebook.com/Le-FestivElles-du-Livre-108875411471975/"><img src="images/facebook96.jpg" alt="logo facebook"></a></li>
+                    <li><a href="https://www.instagram.com/festiv_elles_du_livre/" target="_blank"><img src="images/instagram96.jpg" alt="logo instagram"></a></li>
+                    <li><a href="https://www.facebook.com/Le-FestivElles-du-Livre-108875411471975/" target="_blank"><img src="images/facebook96.jpg" alt="logo facebook"></a></li>
                 </ul>
             </div>
 
@@ -127,8 +127,8 @@
             {% for event in events %}
             <li>
                 <h3>{{ event.date|format_datetime('full', 'none', locale='fr') }}</h3>
+                <h4>{{ event.title }}</h4>
                 <p>
-                    {{ event.title }}
                     {% if event.content != null %}
                     {{ event.content|nl2br }}
                     {% endif %}
@@ -159,7 +159,7 @@
                 <img class="articleImage" src="{{ asset('uploads/images/' ~ article.imageFilename) }}" alt="{{ article.title }}">
                 {% endif %}
                 {% if article.youTubeLink != null %}
-                <iframe width="560" height="315" src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe  src="{{ article.youTubeLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 {% endif %}
                 <p>
                     {{ article.content|nl2br }}
