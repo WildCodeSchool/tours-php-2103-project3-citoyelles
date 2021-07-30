@@ -41,8 +41,10 @@
             {% for calendar in calendars %}
             <li>
                 <h3>{{ calendar.date|format_datetime('full', 'short', locale='fr') }}</h3>
+                <h4>
+                    {{ calendar.title }}
+                </h4>
                 <p>
-                    {{ calendar.title }} </br>
                     {% if calendar.content != null %}
                     {{ calendar.content|nl2br }} 
                     {% endif %}
