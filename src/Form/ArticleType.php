@@ -48,7 +48,7 @@ class ArticleType extends AbstractType
             ->add('youTubeLink', TextType::class, [
                 'required' => false,
                 'label' => 'Lien vidéo YouTube : ',
-                'attr' => ['placeholder' => 'https://www.youtube.com/watch?v=exemple']
+                'attr' => ['placeholder' => 'https://www.youtube.com/embed/gVbAdncN3JY']
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Texte : ',
