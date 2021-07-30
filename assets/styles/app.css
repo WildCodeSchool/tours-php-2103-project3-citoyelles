@@ -31,6 +31,13 @@ img {
     display: block;
 }
 
+iframe {
+    width: 80vw;
+    height: 45vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* general css --------------------------------------------------------*/
 
@@ -451,6 +458,11 @@ img.logo_citoyelles {
 }
 
 @media screen and (min-width: 901px) {
+    iframe {
+        width: 30vw;
+        height: 17vw;
+    }
+
     /* elements of sidenav */
     #burger,
     .closebtn,
